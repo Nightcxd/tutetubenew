@@ -27,10 +27,10 @@
 
         <!--数据库方言信息-->
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
-        <property name="connection.url">jdbc:mysql://www.tuteschool.cn:3306/tutetube?characterEncoding=UTF-8</property>
+        <property name="connection.url">jdbc:mysql://XXX/XXX?characterEncoding=UTF-8</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">cxd19950819</property>
+        <property name="connection.username">XXX</property>
+        <property name="connection.password">XXXX</property>
         <property name="show_sql">true</property>
         <!--导入映射配置-->
         <mapping resource="cn/tutetube/util/Student.hbm.xml"/>
