@@ -1,0 +1,112 @@
+body{
+	background: #d8f2ff;
+}
+
+.province{
+	position: relative;
+}
+
+.province select{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 999;
+}
+
+.province .input-name{
+	width: 80%;
+	padding-left: 15px;
+	text-align: left;
+}
+
+.name .input-name{
+	width: auto;
+	padding-left: 15px;
+	text-align: left;
+}
+
+#submit-btn{
+	margin: 60px auto ;
+}
+
+.input-box {
+    font-family: "Microsoft Yahei";
+    width: 90%;
+    margin: 10px auto;
+}
+
+.input-box {
+    overflow: hidden;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: solid 1px #c8c7cc;
+    background: #fff;
+}
+
+.name .input-name {
+    width: auto;
+    padding-left: 15px;
+    text-align: left;
+}
+.input-name {
+    display: inline-block;
+    font-size: 14px;
+    color: #333;
+    width: 4em;
+    text-align: right;
+    position: relative;
+    z-index: 1;
+}
+.long-input {
+    display: block;
+    position: relative;
+    height: 45px;
+    line-height: 45px;
+    width: 100%;
+    margin: 0 auto;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.input-value {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+    display: inline-block;
+    font-size: 16px;
+    color: #333;
+    border: none;
+    background: none;
+    outline: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding-left: 5em;
+    z-index: 10;
+}
+.forminfo{
+    margin-top: 4%;
+}
+.blue-radius-box {
+    background: #45c0f8;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+#submit-btn {
+    margin: 60px auto;
+}
+#submit-btn {
+    display: block;
+    height: 45px;
+    width: 90%;
+    margin: 0 auto;
+    font-family: "Microsoft Yahei";
+}

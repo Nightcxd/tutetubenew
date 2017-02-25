@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="css/getscore.css"/>
+    <title>绑定教务系统</title>
+<body style="background: #eee;">
+<div class="header">
+    <span>绑定教务系统</span>
+    <!--<a href="queryAll.html" class="back"><i class="iconfont icon-left"></i></a>-->
+</div>
+<div class="input-box">
+    <div class="long-input">
+        <span class="input-name">学号</span>
+        <input id="xh" class="input-value" placeholder="请输入教务系统学号" autocomplete="on">
+    </div>
+    <div class="long-input">
+        <span class="input-name">密码</span>
+        <input id="psd" type="password" class="input-value" placeholder="请输入教务系统密码">
+    </div>
+</div>
+<button class="green-radius-box" id="submit-btn" onclick="bindJw()">绑定</button>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/basic.js"></script>
+<script type="text/javascript" src="js/rem.js"></script>
+<script type="text/javascript">
+    function bindJw(){
+        var xh=$("#xh").val().trim();
+        var psd=$("#psd").val().trim();
+        if(xh==""||psd==""){
+            alert("用户名或密码不能为空");
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: "/bindingJw?xh="+xh.trim()+"&psd="+psd.trim()+"",
+                dataType: "html",
+                success: function (msg) {
+                    if(msg=="101"){
+                        alert("学号不存在");
+                    }
+                    else if(msg=="102"){
+                        alert("密码不正确");
+                    }
+                    else if(msg=="103"){
+                        alert("网页格式错误");
+                    }
+                    else if(msg=="104"){
+                        alert("连接超时或其他异常");
+                    }
+                    else if(msg=="1"){
+                        alert("绑定成功!");
+                        self.location=document.referrer;
+                    }
+                }
+            });
+        }
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/checkcookie",
+            dataType: "html",
+            success: function (msg) {
+                if(msg=="0"){
+                    alert("你还没有登陆，登陆下吧亲！")
+                    window.location.href="login.html";
+                }
+                else
+                {
+                    console.log("会话正常！");
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

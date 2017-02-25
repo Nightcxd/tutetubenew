@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" href="./css/scrollbar.css" type="text/css"/>
+    <script type="application/javascript" src="./js/iscroll.js"></script>
+    <script type="text/javascript">
+
+        var myScroll,
+                pullDownEl, pullDownOffset,
+                pullUpEl, pullUpOffset,
+                generatedCount = 0;
+
+        /**
+         * 下拉刷新 （自定义实现此方法）
+         * myScroll.refresh();        // 数据加载完成后，调用界面更新方法
+         */
+        function pullDownAction() {
+            setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from production!
+                var el, li, i;
+                el = document.getElementById('thelist');
+
+                for (i = 0; i < 3; i++) {
+                    li = document.createElement('li');
+                    li.innerText = '新闻标题' + (++generatedCount);
+                    el.insertBefore(li, el.childNodes[0]);
+                }
+
+                myScroll.refresh();		//数据加载完成后，调用界面更新方法   Remember to refresh when contents are loaded (ie: on ajax completion)
+            }, 1000);	// <-- Simulate network congestion, remove setTimeout from production!
+        }
+
+        /**
+         * 滚动翻页 （自定义实现此方法）
+         * myScroll.refresh();        // 数据加载完成后，调用界面更新方法
+         */
+        function pullUpAction() {
+            setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from production!
+                var el, li, i;
+                el = document.getElementById('thelist');
+
+                for (i = 0; i < 3; i++) {
+                    li = document.createElement('li');
+                    li.innerText = '新闻标题' + (++generatedCount);
+                    el.appendChild(li, el.childNodes[0]);
+                }
+
+                myScroll.refresh();		// 数据加载完成后，调用界面更新方法 Remember to refresh when contents are loaded (ie: on ajax completion)
+            }, 1000);	// <-- Simulate network congestion, remove setTimeout from production!
+        }
+
+        /**
+         * 初始化iScroll控件
+         */
+        function loaded() {
+            pullDownEl = document.getElementById('pullDown');
+            pullDownOffset = pullDownEl.offsetHeight;
+            pullUpEl = document.getElementById('pullUp');
+            pullUpOffset = pullUpEl.offsetHeight;
+
+            myScroll = new iScroll('wrapper', {
+                scrollbarClass: 'myScrollbar', /* 重要样式 */
+                useTransition: false, /* 此属性不知用意，本人从true改为false */
+                topOffset: pullDownOffset,
+                onRefresh: function () {
+                    if (pullDownEl.className.match('loading')) {
+                        pullDownEl.className = '';
+                        pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
+                    } else if (pullUpEl.className.match('loading')) {
+                        pullUpEl.className = '';
+                        pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
+                    }
+                },
+                onScrollMove: function () {
+                    if (this.y > 5 && !pullDownEl.className.match('flip')) {
+                        pullDownEl.className = 'flip';
+                        pullDownEl.querySelector('.pullDownLabel').innerHTML = '松手开始更新...';
+                        this.minScrollY = 0;
+                    } else if (this.y < 5 && pullDownEl.className.match('flip')) {
+                        pullDownEl.className = '';
+                        pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
+                        this.minScrollY = -pullDownOffset;
+                    } else if (this.y < (this.maxScrollY - 5) && !pullUpEl.className.match('flip')) {
+                        pullUpEl.className = 'flip';
+                        pullUpEl.querySelector('.pullUpLabel').innerHTML = '松手开始更新...';
+                        this.maxScrollY = this.maxScrollY;
+                    } else if (this.y > (this.maxScrollY + 5) && pullUpEl.className.match('flip')) {
+                        pullUpEl.className = '';
+                        pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
+                        this.maxScrollY = pullUpOffset;
+                    }
+                },
+                onScrollEnd: function () {
+                    if (pullDownEl.className.match('flip')) {
+                        pullDownEl.className = 'loading';
+                        pullDownEl.querySelector('.pullDownLabel').innerHTML = '加载中...';
+                        pullDownAction();	// Execute custom function (ajax call?)
+                    } else if (pullUpEl.className.match('flip')) {
+                        pullUpEl.className = 'loading';
+                        pullUpEl.querySelector('.pullUpLabel').innerHTML = '加载中...';
+                        pullUpAction();	// Execute custom function (ajax call?)
+                    }
+                }
+            });
+
+            setTimeout(function () {
+                document.getElementById('wrapper').style.left = '0';
+            }, 800);
+        }
+
+        //初始化绑定iScroll控件
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+        }, false);
+        document.addEventListener('DOMContentLoaded', loaded, false);
+
+    </script>
+    <style type="text/css" media="all">
+        #wrapper {
+            position: absolute;
+            z-index: 1;
+            top: 10%;
+            bottom: 48px;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0);
+            overflow: auto;
+        }
+
+        #scroller {
+            position: relative;
+            /*	-webkit-touch-callout:none;*/
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+            float: left;
+            width: 100%;
+            padding: 0;
+        }
+
+        #scroller ul {
+            position: relative;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            text-align: left;
+        }
+
+        #scroller li {
+            padding: 0 10px;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #ccc;
+            border-top: 1px solid #fff;
+            background-color: #fafafa;
+            font-size: 14px;
+        }
+
+        #scroller li > a {
+            display: block;
+        }
+
+        /**
+         *
+         * 下拉样式 Pull down styles
+         *
+         */
+        #pullDown, #pullUp {
+            background: #fff;
+            height: 40px;
+            line-height: 40px;
+            padding: 5px 10px;
+            border-bottom: 1px solid #ccc;
+            font-weight: bold;
+            font-size: 14px;
+            color: #888;
+        }
+
+        #pullDown .pullDownIcon, #pullUp .pullUpIcon {
+            display: block;
+            float: left;
+            width: 40px;
+            height: 40px;
+            background: url(./img/pull-icon@2x.png) 0 0 no-repeat;
+            -webkit-background-size: 40px 80px;
+            background-size: 40px 80px;
+            -webkit-transition-property: -webkit-transform;
+            -webkit-transition-duration: 250ms;
+        }
+
+        #pullDown .pullDownIcon {
+            -webkit-transform: rotate(0deg) translateZ(0);
+        }
+
+        #pullUp .pullUpIcon {
+            -webkit-transform: rotate(-180deg) translateZ(0);
+        }
+
+        #pullDown.flip .pullDownIcon {
+            -webkit-transform: rotate(-180deg) translateZ(0);
+        }
+
+        #pullUp.flip .pullUpIcon {
+            -webkit-transform: rotate(0deg) translateZ(0);
+        }
+
+        #pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {
+            background-position: 0 100%;
+            -webkit-transform: rotate(0deg) translateZ(0);
+            -webkit-transition-duration: 0ms;
+
+            -webkit-animation-name: loading;
+            -webkit-animation-duration: 2s;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-timing-function: linear;
+        }
+
+        @-webkit-keyframes loading {
+            from {
+                -webkit-transform: rotate(0deg) translateZ(0);
+            }
+            to {
+                -webkit-transform: rotate(360deg) translateZ(0);
+            }
+        }
+        .li-font{
+            color: red;
+            font-size: 8px;
+        }
+    </style>
+
+    <title>新闻资讯</title>
+<body>
+<div class="header">
+    <span>新闻资讯</span>
+    <a href="index.html" class="back"><i class="iconfont icon-left"></i></a>
+</div>
+<div id="wrapper">
+    <div id="scroller">
+        <div id="pullDown">
+            <span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新...</span>
+        </div>
+        <ul id="thelist">
+            <li class="li-font">中国共产党第十八届中央委员会第六次全体会议公报</li>
+            <li class="li-font">市委常委、市委教育工委书记陈浙闽莅临我校调研指导</li>
+            <li class="li-font">我校“工匠之师”徐国胜老师荣膺天津市首届10大“津门工</li>
+            <li>我校科技特派员参加市科委赴企业参观交流活动</li>
+            <li>我校举办第七届大学生教育技术应用能力大赛</li>
+            <li>大力推进党建和思想政治教育工作 学生公寓设立党</li>
+            <li>赵海龙老师在2016年第七届全国数控技能大赛中荣</li>
+            <li>学习贯彻党的十八届六中全会精神增强“四个意识"”</li>
+            <li>校长刘欣参加经济与管理学院金融信用教工党支部</li>
+            <li>“产业转型与职业教育创新”国际学术研讨会召开</li>
+        </ul>
+        <div id="pullUp">
+            <span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+        </div>
+
+    </div>
+</div>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/basic.js"></script>
+<script type="text/javascript" src="js/rem.js"></script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/title",
+            dataType: "html",
+            success: function (msg) {
+                var info = msg;
+                $("#school-info").html("");
+                $("#school-info").html(msg);
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/checkcookie",
+            dataType: "html",
+            success: function (msg) {
+                if(msg=="0"){
+                    alert("你还没有登陆，登陆下吧亲！");
+                    window.location.href="login.html";
+                }
+                else
+                {
+                    console.log("会话正常！");
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

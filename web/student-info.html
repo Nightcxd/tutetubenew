@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/querystyle.css">
+    <title>学籍信息</title>
+    <script>
+        document.write('<div id="bigLoadingHolder" style="position:absolute;top:0;z-index:2;background:#fff;height:100%;width:100%"><div id="loadingDiv" style="background:rgba(0,0,0,0.8);border-radius:5px;position:absolute;top:50%;left:50%;margin:-15px 0 0 -40px;width:80px;line-height:30px;font-size:14px;height:30px;text-align:center;color:#f1f1f1">正在加载</div></div>');
+    </script>
+<body>
+<div class="header">
+    <span>学籍信息</span>
+    <a href="user-center.html" class="back"><i class="iconfont icon-left"></i></a>
+</div>
+<div id="info">
+    <div class="content">
+        <div class="xueqi" onclick="flush()">
+            <div class="class">
+                <label id="s-info">亲，点我刷新下吧！</label>
+            </div>
+        </div>
+        <div class="rate_group">
+            <table>
+
+            </table>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/basic.js"></script>
+<script type="text/javascript" src="js/rem.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/sInfo",
+            dataType: "html",
+            success: function (msg) {
+                if (msg == "0") {
+                    $("#s-info").html("");
+                    $("#s-info").html("亲，点我刷新下吧！");
+                }
+                else {
+                    $("#s-info").html("");
+                    $("#s-info").html("我就是我，颜色不一样的烟火");
+                    $("table").html("");
+                    $("table").html(msg);
+                }
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    function flush(){
+        window.location.href="bindjw.html";
+    }
+</script>
+</body>
+</html>

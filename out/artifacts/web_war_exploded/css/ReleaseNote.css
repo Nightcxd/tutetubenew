@@ -1,0 +1,106 @@
+.txt-link{
+    color: rgba(68,68,68,.3);
+}
+.txt-link{
+    font-size: 20px;
+    color: #ffffff;
+    float: right;
+    margin-right: 2%;
+    position: relative;
+}
+textarea {
+    font-family: monospace;
+    border-color: rgb(169, 169, 169);
+}
+textarea {
+    -webkit-appearance: textarea;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    user-select: text;
+    flex-direction: column;
+    resize: auto;
+    cursor: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border-width: 1px;
+    border-style: solid;
+    border-color: initial;
+    border-image: initial;
+    padding: 2px;
+}
+.txt-publisher-wrapper{
+    background-color: #fff;
+    padding: 5px 0 0 0;
+}
+.J-textarea {
+    padding: 8px 14px 0 14px;
+    width: 100%;
+    height: 120px;
+    font-size: 16px;
+    border-color: #45c0f8;
+    resize: vertical;
+    background-color: #fff;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+ .action-publisher {
+    background-color: #f9f9f9;
+    overflow: hidden;
+    font-size: 22px;
+    text-align: center;
+    position: relative;
+    height: 43px;
+    z-index: 1;
+}
+@media (-webkit-min-device-pixel-ratio: 2),not all{
+    .line-bottom, .card-combine .line-around:not(.card9), .line-separate::after {
+        border: none;
+        background-image: -webkit-gradient(linear,left top,left bottom,color-stop(50%,transparent),color-stop(50%,transparent),color-stop(100%,#dadada));
+        background-image: -webkit-linear-gradient(top,transparent 50%,#dadada 50%,#dadada 100%);
+        background-image: linear-gradient(to bottom,transparent 50%,#dadada 50%,#dadada 100%);
+        background-size: 100% 1px;
+        background-repeat: no-repeat;
+        background-position: bottom;
+    }
+    .line-bottom, .card-combine .line-around:not(.card9), .line-separate::after {
+        border-bottom: 1px solid #dadada;
+    }
+    .layout-box {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+}
+.action-publisher .box-col {
+    margin-top: 10px;
+}
+.layout-box .box-col {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
+}
+.action-publisher .iconf_compose_picture {
+    position: relative;
+    top: -2px;
+}
+.action-publisher .picupload {
+    opacity: 0;
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    overflow: hidden;
+    float: left;
+    margin-left: -84px;
+}
+img {
+    width: 50%;
+    height: 50%;
+    cursor: pointer;
+    vertical-align: middle;
+    border: 0 none;
+}

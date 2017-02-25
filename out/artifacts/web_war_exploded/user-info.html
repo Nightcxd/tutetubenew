@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="css/sysuser.css"/>
+    <title>个人信息</title>
+<body>
+<div class="header">
+    <span>个人信息</span>
+    <a href="user-center.html" class="back"><i class="iconfont icon-left"></i></a>
+</div>
+<div>
+<section class="list-info-page">
+    <div class="nickname item-info-page arrow-card showPop"><span>昵称</span>
+        <p id="J_name" class="J_label" iscompany="">、折戟沉沙</p></div>
+    <div class="item-info-page"><span>性别</span>
+        <div class="L-select" onclick="alert('#性别一旦确定无法修改！');return false;">男</div>
+    </div>
+    <div class="item-info-page arrow-card  showPop"><span>简介</span>
+
+        <p id="J_summary" class="J_label">校园播客分享达人</p></div>
+</section>
+</div>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/basic.js"></script>
+<script type="text/javascript" src="js/rem.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/checkcookie",
+            dataType: "html",
+            success: function (msg) {
+                if(msg=="0"){
+                    alert("你还没有登陆，登陆下吧亲！");
+                    window.location.href="login.html";
+                }
+                else
+                {
+                    console.log("会话正常！");
+                }
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/getUserInfo",
+            dataType: "html",
+            success: function (msg) {
+                if(msg=="0"){
+                    alert("你还没有登陆，登陆下吧亲！");
+                    window.location.href="login.html";
+                }
+                else
+                {
+                    console.log(msg);
+                    var info =msg.split("#$%");
+                    var nicknamecn=info[0].trim();
+                    var sex=info[1].trim();
+                    if(nicknamecn=="null"||nicknamecn==""){
+                        nicknamecn="未设置昵称";
+                    }
+                    if(sex==""||sex=="null"){
+                        sex="性别未设置";
+                    }
+                    else if(sex=="1"){
+                        sex="男";
+                    }
+                    else if(sex=="0"){
+                        sex="女";
+                    }
+                    var description=info[2].trim();
+                    if(description==""||description=="null"){
+                        description="这个人很懒，什么都没有留下";
+                    }
+                    $("#J_summary").html(description);
+                    $("#J_name").html(nicknamecn);
+                    $(".L-select").html(sex);
+                }
+            }
+        });
+    });
+
+
+</script>
+</body>
+</html>

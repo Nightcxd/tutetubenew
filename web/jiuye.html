@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="css/schoolstyle.css">
+    <title>就业信息</title>
+</head>
+<body class="bge">
+<div class="header">
+    <span>就业信息</span>
+    <a href="index.html" class="back"><i class="iconfont icon-left"></i></a>
+</div>
+<div class="Newsinfo">
+    <h2 class="news_title">就业信息</h2>
+    <div class="banner">
+        <div id="qiehuan" style="overflow: hidden;">
+            <div id="scroller" style="width: 1125px; transform: translate3d(-750px, 0px, 0px) scale(1);">
+                <ul id="thelist">
+                    <li><p>招聘信息</p><a href="NewDetail.html"><img src="img/banner1.png" style="width: 375px;"></a></li>
+                    <li><p>就业快讯</p><a href="NewDetail.html"><img src="img/banner1.png" style="width: 375px;"></a></li>
+                    <li><p>工作动态</p><a href="NewDetail.html"><img src="img/banner1.png" style="width: 375px;"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="nav">
+            <ul id="indicator">
+                <li class=""></li>
+                <li class=""></li>
+                <li class="active"></li>
+            </ul>
+        </div>
+        <script>
+            var count = document.getElementById("thelist").getElementsByTagName("img").length;
+
+            var count2 = document.getElementsByClassName("menuimg").length;
+            for(i=0;i<count;i++){
+                document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+
+            }
+            document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+
+            setInterval(function(){
+                myScroll.scrollToPage('next', 0,400,count);
+            },3500 );
+            window.onresize = function(){
+                for(i=0;i<count;i++){
+                    document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+
+                }
+                document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+            }
+
+        </script>
+    </div>
+    <ul class="tabslider">
+        <!--<li><a id="ldtc" onclick="showDetails(this.id)">领导题词</a></li>-->
+        <!--<li><a id="lstg" onclick="showDetails(this.id)">历史沿革</a></li>-->
+        <!--<li><a id="lrld" onclick="showDetails(this.id)">历任领导</a></li>-->
+        <!--<li><a id="xrld" onclick="showDetails(this.id)">现任领导</a></li>-->
+        <!--<li><a id="xxjj" onclick="showDetails(this.id)">学校简介</a></li>-->
+        <!--<li><a id="dsj" onclick="showDetails(this.id)">大事记</a></li>-->
+        <!--<li><a id="xywh" onclick="showDetails(this.id)">校园文化</a></li>-->
+        <!--<li><a id="sdgf" onclick="showDetails(this.id)">师德规范</a></li>-->
+        <!--<li><a id="xxdt" onclick="showDetails(this.id)">校园地图</a></li>-->
+    </ul>
+</div>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/rem.js"></script>
+<script type="text/javascript" src="js/new_scroll.js"></script>
+<script type="text/javascript">
+    var myScroll;
+
+    function loaded() {
+        myScroll = new iScroll('qiehuan', {
+            snap: true,
+            momentum: false,
+            hScrollbar: false,
+            onScrollEnd: function () {
+                document.querySelector('#indicator > li.active').className = '';
+                document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+            }
+        });
+
+
+    }
+
+    document.addEventListener('DOMContentLoaded', loaded, false);
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/checkcookie",
+            dataType: "html",
+            success: function (msg) {
+                if(msg=="0"){
+                    alert("你还没有登陆，登陆下吧亲！");
+                    window.location.href="login.html";
+                }
+                else
+                {
+                    console.log("会话正常！");
+                }
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/getmodule?module_id=jyxx",
+            dataType: "html",
+            success: function (msg) {
+                if(msg=="100"){
+                    alert("网络异常，请重新操作！");
+                    self.location=document.referrer;
+                }
+                else
+                {
+                    var result="";
+                    var LiArray=msg.split("#$%");
+                    var LiSize=LiArray.length-1;
+                    for(var i=0;i<LiSize;i++){
+                        result+="<li><a id='"+LiArray[i].split(":")[0]+"' onclick='showDetails(this.id)'>"+LiArray[i].split(":")[1]+"</a></li>";
+                    }
+                    $(".tabslider").html("");
+                    $(".tabslider").html(result);
+                }
+            }
+        });
+    });
+
+    function showDetails(v){
+        var id= v.trim();
+        $.ajax({
+            type: "POST",
+            url: "/SaveModulePartId?modulePart_id="+id.trim()+"",
+            dataType: "html",
+            success: function (msg) {
+                if(msg=="1"){
+                    window.location.href="NewDetail.html";
+                }
+                else
+                {
+                    alert("网络异常！");
+                }
+            }
+        })
+    }
+</script>
+</body>
+</html>

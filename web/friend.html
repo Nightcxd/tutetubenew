@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <title>好友</title>
+<body class="bge">
+<div class="header">
+    <span>一点通</span>
+    <!--<a href="user-center.html"><span class="user"><i class="iconfont icon-person"></i></span></a>-->
+</div>
+<div class="footer">
+    <ul class="footer-page clearfix">
+        <li class="page-item">
+            <a href="index.html" class="active">
+                <i class="iconfont icon-index"></i>
+                <p>首页</p>
+            </a>
+        </li>
+        <li class="page-item">
+            <a href="queryAll.html">
+                <i class="iconfont icon-computer"></i>
+                <p>查询</p>
+            </a>
+        </li>
+        <li class="page-item ">
+            <a href="pulic.html">
+                <i class="iconfont icon-ask"></i>
+                <p>广场</p>
+            </a>
+        </li>
+        <li class="page-item active">
+            <a href="friend.html">
+                <i class="iconfont icon-friend"></i>
+                <p>好友</p>
+            </a>
+        </li>
+        <li class="page-item">
+            <a href="user-center.html">
+                <i class="iconfont icon-person1"></i>
+                <p>我的</p>
+            </a>
+        </li>
+    </ul>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/basic.js"></script>
+<script src="js/rem.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/checkcookie",
+            dataType: "html",
+            success: function (msg) {
+                if(msg=="0"){
+                    alert("你还没有登陆，登陆下吧亲！");
+                    window.location.href="login.html";
+                }
+                else
+                {
+                    console.log("会话正常！");
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

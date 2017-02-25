@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/getscore.css"/>
+    <link rel="stylesheet" type="text/css" href="css/scoreresult.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <title>查询结果</title>
+    <script>
+        document.write('<div id="bigLoadingHolder" style="position:absolute;top:0;z-index:2;background:#fff;height:100%;width:100%"><div id="loadingDiv" style="background:rgba(0,0,0,0.8);border-radius:5px;position:absolute;top:50%;left:50%;margin:-15px 0 0 -40px;width:80px;line-height:30px;font-size:14px;height:30px;text-align:center;color:#f1f1f1">正在加载</div></div>');
+    </script>
+<body style="background: #eee;">
+<div class="header">
+    <span>查询结果</span>
+    <a href="getscore.html" class="back"><i class="iconfont icon-left"></i></a>
+</div>
+<!--<div id="header">本学期</div>-->
+
+<!-- start the table title -->
+
+<div id="result">
+    <div id="table-title" class="clearfix">
+        <div class="table-h h-8-5">课程名称</div>
+        <div class="table-h h-2-5">成绩</div>
+    </div>
+</div>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/basic.js"></script>
+<script type="text/javascript" src="js/rem.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        setTimeout(function () {
+            $("#bigLoadingHolder").addClass("display-none");
+        }, 1500);
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/getThisScore",
+            dataType: "html",
+            success: function (msg) {
+                if(msg=="0"){
+//                var info = msg;
+                    alert("请重新绑定教务系统！");
+                    window.location.href="bindjw.html";
+                }
+                else if(msg=="2"){
+                    alert("请重新操作！");
+                    self.location=document.referrer;
+                }
+                else if(msg=="401"||msg=="402"||msg=="403"||msg=="500"){
+                    alert("啊哦,网络异常！");
+                    self.location=document.referrer;
+                }
+                else{
+                    $("#result").html("");
+                    $("#result").html(msg);
+                }
+            }
+        });
+    });
+    </script>
+</body>
+</html>

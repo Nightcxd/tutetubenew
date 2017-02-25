@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="css/topic.css?v=3.00"/>
+    <link rel="stylesheet" type="text/css" href="css/SchoolTopic.css"/>
+    <link rel="stylesheet" href="css/ReleaseNote.css" type="text/css"/>
+    <link rel="stylesheet" href="css/modsnote.css" type="text/css"/>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <title>发布动态</title>
+<body>
+<div class="header">
+    <span style="position: relative;left: 6%;">发布动态</span>
+    <a href="topic.html" class="back"><i class="iconfont icon-left"></i></a>
+    <a class="txt-link" id="release">发送</a>
+</div>
+<div id="title" style="display: none"></div>
+<div class="over"></div>
+<!--背景层-->
+<div class="send_note">
+    <div class="send_conent">
+        <div class="txt-publisher-wrapper">
+            <textarea id="txt-publisher" name="content" class="J-textarea txt-publisher" placeholder="发现身边的精彩..."
+                      style="margin-top: 0px; margin-bottom: 0px; height: 148px;"></textarea>
+        </div>
+
+        <section class="action-publisher layout-box line-bottom">
+            <div class="box-col" style="position:relative;"><span class="iconf iconf_compose_picture">添加图片</span>
+                <input id="picupload" capture="camera" class="picupload" name="fileselect[]" type="file"
+                       accept="image/*" multiple/></div>
+        </section>
+        <div id="showImages"></div>
+    </div>
+</div>
+<script type="text/javascript" src="js/basic.js"></script>
+<script type="text/javascript" src="js/rem.js"></script>
+<script type="text/javascript" src="js/topic.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/getNoteType",
+            dataType: "html",
+            success: function (msg) {
+                if (msg == "0") {
+                    alert("网络异常请重新操作！");
+                    window.location.href = "pulic.html";
+                }
+                else {
+                    $("#title").html("");
+                    $("#title").html(msg.trim());
+                }
+            }
+        });
+    });
+    $("#release").click(function () {
+        function p(s) {
+            return s < 10 ? '0' + s : s;
+        }
+
+        var myDate = new Date();
+        //获取当前年
+        var year = myDate.getFullYear();
+        //获取当前月
+        var month = myDate.getMonth() + 1;
+        //获取当前日
+        var date = myDate.getDate();
+        var h = myDate.getHours();       //获取当前小时数(0-23)
+        var m = myDate.getMinutes();     //获取当前分钟数(0-59)
+        var s = myDate.getSeconds();
+        var now = p(month) + "-" + p(date) + " " + p(h) + ':' + p(m)+" ["+year+"]";
+        var note_type = $("#title").html().trim();
+        var note_content = $("#txt-publisher").val();
+        var note_images = $(".note_images");
+        var count = note_images.size();
+        var img = new Array();
+        for (var i = 0; i < count; i++) {
+            img[i] = note_images[i].src;
+        }
+        if (note_type == "" || note_content == "") {
+            alert("请完善信息");
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: "/ReleaseNote?note_type=" + note_type.trim() + "&note_content=" + note_content.trim() + "&release_time="+now+"",
+                data: {"imgList[]": img},
+                dataType: "html",
+                success: function (msg) {
+                    if(msg=="100"||msg=="101"||msg=="102"||msg=="103"){
+                        alert("网络异常，请重新操作！");
+                        location.reload();
+
+                    }
+                    else if(msg=="1"){
+                        alert("发帖成功！");
+                        self.location=document.referrer;
+                    }
+                }
+            });
+
+        }
+    });
+    window.onload = function () {
+        var input = document.getElementById("picupload");
+        var result, div;
+
+        if (typeof FileReader === 'undefined') {
+            result.innerHTML = "抱歉，你的浏览器不支持 FileReader";
+            input.setAttribute('disabled', 'disabled');
+        } else {
+            input.addEventListener('change', readFile, false);
+        }//handler
+        function readFile() {
+            $("#showImages").html("");
+            var fd = new FormData();
+            var count = this.files.length;
+            for (var i = 0; i < count; i++) {
+                if (count - 1 > 5) {
+                    return alert("图片数量超过六张！");
+                }
+                else {
+                    if (!input['value'].match(/.jpg|.gif|.png|.bmp/i)) {//判断上传文件格式
+                        return alert("上传的图片格式不正确，请重新选择");
+                    }
+                    var reader = new FileReader();
+                    reader.readAsDataURL(this.files[i]);
+                    fd.append("img" + i, this.files[i]);//
+                    reader.onload = function (e) {
+                        result = '<div class="result"><img class="note_images" src="' + this.result + '" alt=""/></div>';
+                        div = document.createElement('div');
+                        div.innerHTML = result;
+                        document.getElementById('showImages').appendChild(div);//插入dom树
+                    }
+                }
+            }
+        }
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/checkcookie",
+            dataType: "html",
+            success: function (msg) {
+                if(msg=="0"){
+                    alert("你还没有登陆，登陆下吧亲！");
+                    window.location.href="login.html";
+                }
+                else
+                {
+                    console.log("会话正常！");
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

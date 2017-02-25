@@ -1,0 +1,112 @@
+body {
+    background: #fafafa;
+    font-family: "Microsoft Yahei";
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    width: 100%;
+    background: #fafafa;
+    z-index: 5;
+}
+
+
+/******* score table *********/
+
+#table-title {
+    /*//position: fixed;*/
+    top: 8%;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    color: #399dda;
+    font-size: 14px;
+    border-style: solid;
+    border-color: #deecf2;
+    border-width: 5px 0;
+    background: #f8fdff;
+    z-index: 5;
+}
+
+#table-body {
+    padding: 58px 0 0 0;
+    margin-bottom: 58px;
+}
+
+.h-8-5 {
+    float: left;
+    height: 100%;
+    width: 75%;
+    padding-left: 5%;
+}
+
+.h-2-5 {
+    float: left;
+    height: 100%;
+    width: 20%;
+    white-space: nowrap;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.arrow {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 2%;
+    background: url(/img/arrow.png) 0px -9px no-repeat;
+    background-size: 10px;
+}
+
+.arrow.down {
+    height: 9px;
+    background-position: 0 0;
+}
+
+.table-row {
+    height: 40px;
+    line-height: 40px;
+    background: #fff;
+    border-bottom: 1px solid #ededed;
+}
+
+.course-detail {
+    display: none;
+    padding: 10px 10%;
+    background: #f8f8f8;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    border-bottom: 1px solid #ededed;
+}
+
+.table-course {
+    font-size: 14px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.font-green {
+    color: #16ba00;
+}
+
+.font-red {
+    color: #f16f6f;
+}
+
+.font-small-gray {
+    color: #999;
+    font-size: 12px;
+}
+
+
+/******* score table *********/

@@ -1,0 +1,45 @@
+.content{
+    text-align: center;
+    font-size: 34%;
+    position: relative;
+}
+.content .query {
+    margin-top: 2%;
+}
+.content .query table {
+    width: 100%;
+}
+.content table {
+    margin-top: 5%;
+    width: 100%;
+}
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+.content table tr {
+    border: 1px solid #ddd;
+}
+.content table tr td, .content table tr th {
+    border: 1px solid #ddd;
+    width: 16%;
+    padding: 5px;
+}
+.content .query table tr td {
+    /* border: 1px solid black; */
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+td {
+     /*width: 100px;*/
+    word-wrap:break-word;
+    overflow: hidden;
+    -ms-overflow: hidden;
+    /*white-space: nowrap;*/
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}

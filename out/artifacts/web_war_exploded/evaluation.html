@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="css/getscore.css">
+    <title>教学评估</title>
+    <style type="text/css">
+        table {
+
+            background-color: white;
+            color: #000000;
+            width: 100%;
+        }
+
+        tr {
+            font-size: 14px;
+            line-height: 30px;
+        }
+
+        td {
+            float: left;
+            width: 100%;
+            line-height: 21px;
+            margin-top: 1%;
+            border-bottom: 1px solid #EFEFEF;
+        }
+
+        #form {
+            width: 92%;
+            margin-left: 4%;
+        }
+
+        #contentedit {
+            padding: 3px;
+            font-size: 12px;
+            min-height: 30px;
+            width: 100%;
+            height: 60px;
+            max-height: 400px;
+            border: 1px solid #45c0f8;
+            overflow-x: hidden;
+            overflow-y: auto;
+            word-wrap: break-word;
+        }
+
+        #contentedit:focus {
+            border: red;
+            outline: none;
+            box-shadow: 0 0 2px red, 0 0 1px #45c0f8;
+        }
+
+        input[type="radio"] {
+            background-color: #45c0f8;
+            filter: progid:DXImageTransform.microsoft.gradient(gradienttype=1, startColorStr=cyan, endColorStr=red);
+        }
+        #time{
+            color: rgb(255, 0, 0);
+            font-size: 14px;
+            margin-top: 2%;
+        }
+    </style>
+<body style="background: white;">
+<div class="header">
+    <span>教学评估</span>
+    <a href="TEvaluation.html" class="back"><i class="iconfont icon-left"></i></a>
+</div>
+
+<div id="form">
+    <!--//method="post" action="http://202.113.244.44:9013/jxpgXsAction.do?oper=wjpg"-->
+<form name="StDaForm" id="StDaForm">
+
+    <br/>
+    <br/>
+    <table>
+
+    </table>
+    <!--<div id="time" align="center"></div>-->
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</form>
+</div>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/basic.js"></script>
+<script type="text/javascript" src="js/rem.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/EvaluationDetails",
+            dataType: "html",
+            success: function (msg) {
+                if(msg=="0"||msg=="104"){
+                    alert("网络异常！");
+                    window.location.href="TEvaluation.html";
+                }
+                else{
+                    $("table").html("");
+                    $("table").html(msg);
+                }
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    var minute=1;
+    var second=60;
+    var a=setInterval(daojishi,1000);//1000毫秒
+    function daojishi(){
+        if(second==0&&minute>0){
+            minute=0;
+            second=60;
+        }
+        second--;
+        $("#time").html("离可以提交还差"+minute+"分"+second+"秒");
+        if(second==0&&minute==0){
+            $("#time").remove();
+        }
+
+    }
+</script>
+<script type="text/javascript">
+    function check(){
+        if($('#time').length==0) {
+            var temp="";
+            var c=0;
+            var j=0;
+            for(i=0;i<document.StDaForm.elements.length;i++)
+            {
+                if(document.StDaForm.elements[i].type=='radio'){
+                    if( document.StDaForm.elements[i].checked){ c=1;}
+                    if (document.StDaForm.elements[i].name!=document.StDaForm.elements[i+1].name)
+                    {
+                        j++;
+                        if (c==0) { alert("请回答第"+j+"题!");return;  }
+                        c=0;
+                    }
+                }
+            }
+
+            if($("#contentedit").val()=="")
+            {	alert("主观评价必修填写!");
+                return;
+            }
+            else{
+                $.ajax({
+                    //cache: true,
+                    type: "POST",
+                    url:"http://202.113.244.44:9013/jxpgXsAction.do?oper=wjpg",
+                    data:$('#StDaForm').serialize(),// 你的formid
+                    //async: false,
+                    error: function(request) {
+                        alert(request);
+                    },
+                    success: function(data) {
+                        alert(data);
+                    }
+                });
+
+            }
+        }
+        else {
+            alert("请耐心等待时间结束...");
+        }
+    }
+
+</script>
+</body>
+</html>

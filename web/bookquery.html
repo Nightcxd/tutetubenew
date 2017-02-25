@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/chinese.css"/>
+    <title>图书馆信息查询</title>
+<body style="background: #eee;">
+
+<div class="header">
+    <span>图书借阅查询</span>
+    <a href="queryAll.html" class="back"><i class="iconfont icon-left"></i></a>
+</div>
+
+<div class="forminfo">
+
+    <!-- name -->
+    <div class="name input-box">
+        <div class="long-input">
+            <span class="input-name">图书证号</span>
+            <input type="text" id="user_id" class="input-value" placeholder="请输入图书证号">
+        </div>
+    </div>
+
+    <!-- idCard -->
+    <div class="passcode input-box">
+        <div class="long-input">
+            <span class="input-name">密码</span>
+            <input type="password" placeholder="请输入密码" class="input-value" id="password">
+        </div>
+    </div>
+
+    <!-- submit btn -->
+    <button class="blue-radius-box" id="submit-btn" onclick="queryBookInfo()">查询</button>
+
+</div>
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/basic.js"></script>
+<script type="text/javascript" src="js/rem.js"></script>
+
+<script>
+    function queryBookInfo() {
+        var user_id = $("#user_id").val().trim();
+        var password = $("#password").val().trim();
+        if (user_id == "" || password == "") {
+            alert("请正确填写信息");
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: "/bookQuery?user_id="+user_id.trim()+"&password="+password.trim()+"",
+                dataType: "html",
+                success: function (msg) {
+                    if (msg == "101") {
+                        alert("登陆失败！");
+                    }
+                   else if (msg == "102") {
+                        alert("获取借阅、预约及申请纪录失败！");
+                    }
+//                    else if (msg == "103") {
+//                        alert("获取最终信息失败！");
+//                    }
+                    else if (msg == "103") {
+                        alert("连接超时或其他异常！");
+                    }
+                    else if (msg == "1") {
+                        window.location.href = "bookresult.html";
+                    }
+                    else {
+                        alert("未知异常！");
+                    }
+                }
+            });
+        }
+    }
+</script>
+
+</body>
+</html>

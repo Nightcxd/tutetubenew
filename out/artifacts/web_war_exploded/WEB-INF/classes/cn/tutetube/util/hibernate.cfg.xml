@@ -1,0 +1,47 @@
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+        <property name="hibernate.c3p0.max_size">20</property>
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.timeout">120</property>
+        <property name="automaticTestTable">Test</property>
+        <property name="hibernate.c3p0.max_statements">100</property>
+        <property name="hibernate.c3p0.idle_test_period">120</property>
+        <property name="hibernate.c3p0.acquire_increment">1</property>
+        <property name="c3p0.testConnectionOnCheckout">true</property>
+        <property name="c3p0.idleConnectionTestPeriod">18000</property>
+        <property name="c3p0.maxIdleTime">25000</property>
+        <property name="c3p0.idle_test_period">120</property>
+        <!--数据库连接信息-->
+
+        <!--数据库方言信息-->
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name="connection.url">jdbc:mysql://www.tuteschool.cn:3306/tutetube?characterEncoding=UTF-8</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">cxd19950819</property>
+        <property name="show_sql">true</property>
+        <!--导入映射配置-->
+        <mapping resource="cn/tutetube/util/Student.hbm.xml"/>
+        <mapping resource="cn/tutetube/util/note.hbm.xml"/>
+        <mapping resource="cn/tutetube/util/noteForImages.hbm.xml"/>
+        <mapping resource="cn/tutetube/util/university.hbm.xml"/>
+        <mapping resource="cn/tutetube/util/college.hbm.xml"/>
+        <mapping resource="cn/tutetube/util/module.hbm.xml"/>
+        <mapping resource="cn/tutetube/util/modulePart.hbm.xml"/>
+        <mapping resource="cn/tutetube/util/moduleBase.hbm.xml"/>
+        <mapping resource="cn/tutetube/util/moduleForCollege.hbm.xml"/>
+    </session-factory>
+
+</hibernate-configuration>

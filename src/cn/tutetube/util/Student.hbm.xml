@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="cn.tutetube.bean.Student" table="student">
+        <id name="id" type="string" column="id">
+            <generator class="assigned"/>
+        </id>
+        <property name="sno" type="string" column="sno"/>
+        <property name="nickname" type="string" column="nickname" />
+        <property name="sex" type="java.lang.Integer" column="sex"/>
+        <property name="sname" type="string" column="sname" />
+        <property name="password" type="string" column="password"/>
+        <property name="mobile" type="string" column="mobile"/>
+        <property name="headicon" type="string" column="headicon"/>
+        <property name="classname" type="string" column="classname"/>
+        <property name="college" type="string" column="college"/>
+        <property name="mm" type="string" column="mm"/>
+        <property name="nicknamecn" type="string" not-null="false" column="nicknamecn"/>
+        <property name="description" type="string" column="description"/>
+    </class>
+
+</hibernate-mapping>

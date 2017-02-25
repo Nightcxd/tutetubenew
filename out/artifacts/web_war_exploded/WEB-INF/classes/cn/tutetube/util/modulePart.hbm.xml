@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="cn.tutetube.bean.ModulePart" table="modulePart">
+        <id name="m_pid" type="string" column="m_pid">
+            <generator class="assigned"/>
+        </id>
+        <property name="modulePart_id" type="string" column="modulePart_id"/>
+        <property name="modulePart_name" type="string" column="modulePart_name"/>
+        <property name="modulePart_type" type="string" column="modulePart_type" />
+        <property name="modulePart_description" type="string" column="modulePart_description" />
+        <property name="modulePart_fileUrl" type="string" column="modulePart_fileUrl" />
+        <property name="modulePart_fileType" type="string" column="modulePart_fileType" />
+        <property name="modulePart_content" type="string" column="modulePart_content" />
+        <property name="modulePart_releaseTime" type="string" column="modulePart_releaseTime" />
+        <property name="from_module_id" type="string" column="module_id" />
+    </class>
+
+</hibernate-mapping>

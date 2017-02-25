@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/getscore.css"/>
+    <link rel="stylesheet" type="text/css" href="css/scoreresult.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <!--//<link rel="stylesheet" type="text/css" href="css/mui.min.css">-->
+    <link rel="stylesheet" type="text/css" href="css/querystyle.css">
+    <title>教学评估</title>
+<body style="background: #eee;">
+<div class="header">
+    <span>本学期</span>
+    <a href="getscore.html" class="back"><i class="iconfont icon-left"></i></a>
+</div>
+
+<div id="result">
+    <div id="table-title" class="clearfix">
+        <div class="table-h h-8-5">课程名称</div>
+        <div class="table-h h-2-5">评估状态</div>
+    </div>
+    <!--<div class="table-row clearfix" style="cursor: hand" onclick="postCName(this)">-->
+        <!--<input type="hidden" value="0000000091#@11020043#@沈怡麟#@2016-2017-1实践教学评价问卷#@专业实习（一）#@020508501">-->
+        <!--<div class="table-course h-8-5"><span class="arrow"></span> 嵌入式工程师训练2-1 </div>-->
+        <!--<div class="table-score h-2-5 font-small-gray">是</div>-->
+    <!--</div>-->
+</div>
+<div id="info">
+    <div class="content">
+        <div class="xueqi" onclick="flush()">
+            <div class="class">
+                <label id="s-info">点击绑定教务系统</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/basic.js"></script>
+<script type="text/javascript" src="js/rem.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/sInfo",
+            dataType: "html",
+            success: function (msg) {
+                if (msg == "0") {
+                    $("#s-info").html("");
+                    $("#s-info").html("点击绑定教务系统");
+                }
+                else {
+                    $("#s-info").remove();
+                    $("#s-info").html();
+                }
+            }
+        });
+    });
+    function flush(){
+        window.location.href="bindjw.html";
+    }
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/GetEvaList",
+            dataType: "html",
+            success: function (msg) {
+                if (msg == "0") {
+                    $("#result").html("");
+                }
+                else if (msg == "104") {
+                    $("#result").html("网络异常！");
+                }
+                else{
+                    $("#result").html("");
+                    $("#result").html(msg);
+                }
+            }
+        });
+    });
+
+</script>
+
+<script type="text/javascript">
+
+    function postCName(v){
+        var data1=v.innerText;
+        var classname=data1.trim().split("\ ")[0];
+        var hide= v.innerHTML.toString().split("\"")[3];
+        var wjbm=hide.split("#@")[0].trim();
+        var bpr=hide.split("#@")[1].trim();
+        var pgnr=hide.split("#@")[5].trim();
+       if(classname!=""){
+           var name=classname.trim();
+           $.ajax({
+               type: "POST",
+               url: "/Evaluation?cname=" + name.trim()+"&wjbm="+wjbm+"&bpr="+bpr+"&pgnr="+pgnr+"",
+               dataType: "html",
+               success: function (msg) {
+                    if(msg=="101"){
+                        alert("网络异常！");
+                    }
+                   else if(msg=="1"){
+                        window.location.href="evaluation.html";
+                    }
+               }
+           });
+           }
+    }
+</script>
+
+</body>
+</html>

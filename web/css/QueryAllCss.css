@@ -1,0 +1,53 @@
+.input-box {
+    overflow: hidden;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: solid 1px #c8c7cc;
+    background: #fff;
+}
+.score-type .hot {
+    position: absolute;
+    top: 13px;
+    right: 32px;
+    width: 36px;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 9px;
+    background: #ff501a;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
+.right-arrow {
+    float: right;
+    margin: 17px 15px 0 0;
+    width: 7px;
+    height: 11px;
+    background: url(../img/right-arrow.png) no-repeat;
+    background-size: 7px auto;
+}
+.score-type {
+    margin: 5px auto 17px;
+    font-size: 16px;
+    width: 96%;
+}
+.long-input {
+    display: block;
+    position: relative;
+    height: 45px;
+    line-height: 45px;
+    width: 90%;
+    margin: 0 auto;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+/*对每一个查询框进行查询*/
+.input-name {
+    /*display: inline-block;*/
+    font-size: 16px;
+    color: #333;
+    width: 4em;
+    text-align: right;
+    position: relative;
+    z-index: 1;
+}

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+  <meta name="description" content="">
+  <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="css/base.css"/>
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+  <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+  <title>广场</title>
+	<body class="bge">
+<div class="header">
+    <span>一点通</span>
+    <!--<a href="user-center.html"><span class="user"><i class="iconfont icon-person"></i></span></a>-->
+</div>
+<div class="brief" >
+<div>
+    <!-- start the header -->
+
+    <!-- start the nav -->
+    <ul id="nav" class="clearfix">
+        <li id="caochang-nav" class="active">操场</li>
+        <li id="xueyuan-nav">学院专属</li>
+    </ul>
+    <!-- end the nav -->
+    <!-- start the banner -->
+    <div class="banner swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="img/banner1.png"
+                                                                        alt=""></a></div>
+            <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="img/banner1.png"
+                                                                        alt=""></a></div>
+            <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="img/banner1.png"
+                                                                        alt=""></a></div>
+            <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="img/banner1.png"
+                                                                        alt=""></a></div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <!-- end the banner -->
+    <!-- start the menu -->
+    <ul id="menu" class="clearfix showit">
+
+        <li class="">
+            <a class="clearfix">
+                <img src="./img/zxcc.png" class="icon">
+                <p class="title" dbfield="nameStr" onclick="toTopic(this)">走向操场</p>
+
+                <div class="arrow"></div>
+                <div class="display-none">
+                    <p dbfield="detailStr">每日打卡，热爱运动小分队</p>
+                    <p dbfield="topicIdInt">0</p>
+                    <p dbfield="encryTopicId">BC0593F4EB678393D1C0C25A9BA0E5BB</p>
+                </div>
+            </a>
+        </li>
+
+
+        <li class="">
+            <a  class="clearfix">
+                <img src="./img/kyzq.png" class="icon">
+                <p class="title" dbfield="nameStr" onclick="toTopic(this)">考研专区</p>
+
+                <div class="arrow"></div>
+                <div class="display-none">
+                    <p dbfield="detailStr">考研咨询交流，结伴互督促</p>
+                    <p dbfield="topicIdInt">0</p>
+                    <p dbfield="encryTopicId">7AC85A7C064ABC7B972E68B373AE2607</p>
+                </div>
+            </a>
+        </li>
+
+        <li class="">
+            <a class="clearfix">
+                <img src="./img/xbqd.png" class="icon">
+                <p class="title" dbfield="nameStr" onclick="toTopic(this)">学霸求带</p>
+
+                <div class="arrow"></div>
+                <div class="display-none">
+                    <p dbfield="detailStr">请不要阻挡我学习的脚步！</p>
+                    <p dbfield="topicIdInt">0</p>
+                    <p dbfield="encryTopicId">05E64C0AE3D708356C2E212AC07CD4E7</p>
+                </div>
+            </a>
+        </li>
+
+
+        <li class="">
+            <a class="clearfix">
+                <img src="./img/dyfx.png" class="icon">
+                <p class="title" dbfield="nameStr" onclick="toTopic(this)">电影分享</p>
+
+                <div class="arrow"></div>
+                <div class="display-none">
+                    <p dbfield="detailStr">影视资讯交流，不定期福利放送</p>
+                    <p dbfield="topicIdInt">0</p>
+                    <p dbfield="encryTopicId">3B1B10BD455C6293BB6942E472DAFAEA</p>
+                </div>
+            </a>
+        </li>
+
+        <li class="">
+            <a class="clearfix">
+                <img src="./img/wsch.png" class="icon">
+                <p class="title" dbfield="nameStr" onclick="toTopic(this)">我是吃货</p>
+
+                <div class="arrow"></div>
+                <div class="display-none">
+                    <p dbfield="detailStr">我是吃货</p>
+                    <p dbfield="topicIdInt">0</p>
+                    <p dbfield="encryTopicId">3B1B10BD455C6293BB6942E472DAFAEA</p>
+                </div>
+            </a>
+        </li>
+
+        <li class="">
+            <a class="clearfix">
+                <img src="./img/dtzq.png" class="icon">
+                <p class="title" dbfield="nameStr" onclick="toTopic(this)">斗图专区</p>
+
+                <div class="arrow"></div>
+                <div class="display-none">
+                    <p dbfield="detailStr">资源中转站，发文字不如斗图</p>
+                    <p dbfield="topicIdInt">0</p>
+                    <p dbfield="encryTopicId">FF18829F2569B061B9E9E4287AAD5AC6</p>
+                </div>
+            </a>
+        </li>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    </ul>
+
+    <!-- end the menu -->
+
+    <!-- start the school-menu -->
+    <ul id="school-menu" class="clearfix hideit">
+        <li class="">
+            <a href="#" class="clearfix">
+                <i class="icon news"></i>
+                <p class="title" dbfield="nameStr" onclick="toTopic(this)">校园新鲜事</p>
+                <div class="arrow"></div>
+            </a>
+        </li>
+        <!-- <li class="show-ad">
+            <a href="javascript:;" class="clearfix">
+                <i class="icon notice"></i>
+                <p class="title" dbfield="nameStr">校内新闻通知</p>
+                <div class="arrow"></div>
+            </a>
+        </li> -->
+        <li class="">
+            <a class="clearfix">
+                <i class="icon hollow"></i>
+                <p class="title" dbfield="nameStr" onclick="toTopic(this)">树洞</p>
+                <div class="arrow"></div>
+            </a>
+        </li>
+        <li class="">
+            <a class="clearfix">
+                <i class="icon trading"></i>
+                <p class="title" dbfield="nameStr" onclick="toTopic(this)">跳蚤市场</p>
+                <div class="arrow"></div>
+            </a>
+        </li>
+
+
+         <li class="show-ad">
+            <a class="clearfix">
+                <i class="icon lostProperty"></i>
+                <p class="title" dbfield="nameStr" onclick="toTopic(this)">失物招领</p>
+                <div class="arrow"></div>
+            </a>
+        </li>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+    </ul>
+    <!-- end the school-menu -->
+
+</div>
+</div>
+
+		<div class="footer">
+    	<ul class="footer-page clearfix">
+    		<li class="page-item">
+    			<a href="index.html" class="active">
+    				<i class="iconfont icon-index"></i>
+    				<p>首页</p>
+    			</a>
+    		</li>
+    		<li class="page-item">
+    			<a href="queryAll.html">
+    				<i class="iconfont icon-computer"></i>
+    				<p>查询</p>
+    			</a>
+    		</li>
+    		<li class="page-item active">
+    			<a href="pulic.html">
+    				<i class="iconfont icon-ask"></i>
+    				<p>广场</p>
+    			</a>
+    		</li>
+    		<li class="page-item">
+    			<a href="friend.html">
+    				<i class="iconfont icon-friend"></i>
+    				<p>好友</p>
+    			</a>
+    		</li>
+            <li class="page-item">
+                <a href="user-center.html">
+                    <i class="iconfont icon-person1"></i>
+                    <p>我的</p>
+                </a>
+            </li>
+    	</ul>
+    </div>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/fastclick.js"></script>
+<script src="js/slick.min.js"></script>
+
+<script src="js/rem.js"></script>
+<script src="js/basic.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script>
+    $(function () {
+        $('.autoplay').slick({
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            dots: true
+        });
+    });
+</script>
+<script>
+    $(function () {
+        var banner = new Swiper('.banner', {
+            autoplay: 5000,
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            lazyLoading: true,
+            loop: true
+        });
+    });
+</script>
+<script type="text/javascript">
+    $("#xueyuan-nav").click(function(){
+        $("#caochang-nav").removeClass("active");
+        $("#menu").removeClass("showit").addClass("hideit");
+        $("#xueyuan-nav").removeClass("active").addClass("active");
+        $("#school-menu").removeClass("hideit").addClass("showit");
+    });
+    $("#caochang-nav").click(function(){
+        $("#xueyuan-nav").removeClass("active");
+        $("#school-menu").removeClass("showit").addClass("hideit");
+        $("#caochang-nav").removeClass("active").addClass("active");
+        $("#menu").removeClass("hideit").addClass("showit");
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/checkcookie",
+            dataType: "html",
+            success: function (msg) {
+                if(msg=="0"){
+                    alert("你还没有登陆，登陆下吧亲！");
+                    window.location.href="login.html";
+                }
+                else
+                {
+                    console.log("会话正常！");
+                }
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    function toTopic(v){
+        var note_type= $(v).html();
+        $.ajax({
+            type: "POST",
+            url: "/selectnote?note_type="+note_type.trim()+"",
+            dataType: "html",
+            success: function (msg) {
+                    window.location.href="topic.html";
+            }
+        });
+
+    }
+</script>
+</body>
+</html>

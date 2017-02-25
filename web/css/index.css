@@ -1,0 +1,235 @@
+/* set font  style */
+/* set sprite */
+/* end the hover and active less */
+/* link color setting */
+/* transform scale */
+/**
+* create sprite function
+* @param {
+    [type]
+}
+$path                 [the path of icons folder]
+* @param {
+    [type]
+}
+$name                 [the file name]
+* @param {
+    [type]
+}
+$display:inline-block [set the display]
+* @param {
+    [type]
+}
+$repeat:no-repeat     [description]
+* @return {
+    [type]
+}
+[description]
+* @example
+*  @import "common/fn";
+*  .icon-add {
+    @include sprite('icons/* .png', 'club-dep-setting-plus');
+}
+*/
+/* line 2, ../scss/index.scss */
+#nav {
+  border: 2px solid #53a4ee;
+  border-radius: 5px;
+  background: #fff;
+  margin: 10px 30px;
+}
+/* line 8, ../scss/index.scss */
+#nav li {
+  float: left;
+  width: 50%;
+  color: #53a4ee;
+  text-align: center;
+  line-height: 25px;
+  cursor: pointer;
+}
+/* line 15, ../scss/index.scss */
+#nav li.active {
+  background: #53a4ee;
+  color: #fff;
+}
+
+/* line 21, ../scss/index.scss */
+#wrap {
+  background: #fff;
+}
+
+/* line 24, ../scss/index.scss */
+#banner {
+  border-top: 1px solid #e4e4e4;
+}
+/* line 26, ../scss/index.scss */
+#banner img {
+  width: 100%;
+}
+/* line 31, ../scss/index.scss */
+
+/* line 34, ../scss/index.scss */
+#menu, #school-menu {
+  margin: 0 10px;
+}
+/* line 36, ../scss/index.scss */
+#menu li, #school-menu li {
+  position: relative;
+  line-height: 40px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eaeaea;
+  cursor: pointer;
+}
+/* line 43, ../scss/index.scss */
+#menu li a .icon, #school-menu li a .icon {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  left: 0px;
+}
+/* line 50, ../scss/index.scss */
+#menu li a .like-face, #school-menu li a .like-face {
+  display: inline-block;
+  background-size: 77.5px 579.5px;
+  background-position: 0 -237px;
+  height: 40px;
+  width: 40px;
+}
+/* line 53, ../scss/index.scss */
+#menu li a .news, #school-menu li a .news {
+  display: inline-block;
+  background-size: 77.5px 579.5px;
+  background-position: 0 -277px;
+  height: 40px;
+  width: 40px;
+}
+/* line 56, ../scss/index.scss */
+#menu li a .notice, #school-menu li a .notice {
+  display: inline-block;
+  background-size: 77.5px 579.5px;
+  background-position: 0 -197px;
+  height: 40px;
+  width: 40px;
+}
+/* line 59, ../scss/index.scss */
+#menu li a .hollow, #school-menu li a .hollow {
+  display: inline-block;
+  background-size: 77.5px 579.5px;
+  background-position: 0 -77px;
+  height: 40px;
+  width: 40px;
+}
+/* line 62, ../scss/index.scss */
+#menu li a .trading, #school-menu li a .trading {
+  display: inline-block;
+  background-size: 77.5px 579.5px;
+  background-position: 0 -157px;
+  height: 40px;
+  width: 40px;
+}
+/* line 65, ../scss/index.scss */
+#menu li a .lostProperty, #school-menu li a .lostProperty {
+  display: inline-block;
+  background-size: 77.5px 579.5px;
+  background-position: 0 -117px;
+  height: 40px;
+  width: 40px;
+}
+/* line 68, ../scss/index.scss */
+#menu li a .title, #school-menu li a .title {
+  margin: 0 20px 0 55px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #333333;
+  font-size: 18px;
+}
+/* line 75, ../scss/index.scss */
+#menu li a .time, #menu li a .event, #school-menu li a .time, #school-menu li a .event {
+  position: absolute;
+  right: 30px;
+  top: 11px;
+  color: #666;
+}
+/* line 80, ../scss/index.scss */
+#menu li a .time.open, #menu li a .event.open, #school-menu li a .time.open, #school-menu li a .event.open {
+  color: #ff981f;
+}
+/* line 84, ../scss/index.scss */
+#menu li a .arrow, #school-menu li a .arrow {
+  position: absolute;
+  right: 10px;
+  top: 25px;
+  display: inline-block;
+  background-size: 77.5px 579.5px;
+  background-position: 0 -14px;
+  height: 11px;
+  width: 11px;
+}
+
+/* start the swipe */
+/* line 95, ../scss/index.scss */
+#swipe-box {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* line 100, ../scss/index.scss */
+#swipe-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* line 105, ../scss/index.scss */
+.swipe-pic {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+/* line 110, ../scss/index.scss */
+.swipe-pic a {
+  display: block;
+}
+
+/* line 113, ../scss/index.scss */
+.swipe-pic img {
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* line 118, ../scss/index.scss */
+#swipe-index-points {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+/* line 124, ../scss/index.scss */
+#swipe-index-points .point {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 5px 2px;
+}
+
+/* line 133, ../scss/index.scss */
+#swipe-index-points .active {
+  background: #3b95e8;
+  border: 1px solid #3b95e8;
+}
+.showit{
+    display: block;
+}
+.hideit{
+    display: none;
+}
+
+/* end the swipe */

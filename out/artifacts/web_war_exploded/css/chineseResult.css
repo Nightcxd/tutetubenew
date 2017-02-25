@@ -1,0 +1,51 @@
+body {
+    position: relative
+}
+
+#main {
+    padding-top: 1px
+}
+
+.wrap {
+    border-top: 1px solid #eef4f9;
+    border-bottom: 1px solid #eef4f9;
+    margin-top: 10px;
+    background: #f9fbfd
+}
+
+.wrap .w-detail {
+    position: relative;
+    font-size: 14px;
+    color: #333;
+    margin: 10px 15px
+}
+
+.w-d-name {
+    position: absolute;
+    width: 26%;
+    text-align: right;
+    height: 16px;
+}
+
+.w-d-value {
+    margin-left: 6em;
+    line-height: 16px;
+    min-height: 16px
+}
+
+.share-box {
+    position: fixed;
+    margin-top: -80px
+}
+
+#btn-box {
+    position: static;
+    height: 75px;
+    background: #fff;
+    border-top: 1px solid #eef4f9
+}
+
+#btn-box #share-btn {
+    width: 65%;
+    margin-top: 17.5px
+}

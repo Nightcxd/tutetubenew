@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/querystyle.css">
+    <script>
+        document.write('<div id="bigLoadingHolder" style="position:absolute;top:0;z-index:2;background:#fff;height:100%;width:100%"><div id="loadingDiv" style="background:rgba(0,0,0,0.8);border-radius:5px;position:absolute;top:50%;left:50%;margin:-15px 0 0 -40px;width:80px;line-height:30px;font-size:14px;height:30px;text-align:center;color:#f1f1f1">正在加载</div></div>');
+    </script>
+    <title>借阅信息</title>
+<body>
+<div class="header">
+    <span>借阅信息</span>
+    <a href="bookquery.html" class="back"><i class="iconfont icon-left"></i></a>
+</div>
+<div id="info">
+    <div class="content">
+        <div class="rate_group">
+            <table>
+                <!--<tr>-->
+                    <!--<td>书名</td>-->
+                    <!--<td>原因</td>-->
+                    <!--<td>到期时间</td>-->
+                    <!--<td>欠款</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>瓦尔登湖 心灵永恒的栖息地 = Walden; or,life in the life 梭罗著 杨帆译</td>-->
+                    <!--<td>借书逾期</td>-->
+                    <!--<td>2016/11/2</td>-->
+                    <!--<td>Y1.90</td>-->
+                <!--</tr>-->
+
+            </table>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/basic.js"></script>
+<script type="text/javascript" src="js/rem.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/bookResult",
+            dataType: "html",
+            success: function (msg) {
+                if(msg=="0"){
+                    alert("请重新查询！");
+                    window.location.href="bookquery.html";
+                }
+                else{
+                    $("table").html("");
+                    $("table").html(msg);
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

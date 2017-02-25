@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="css/timetable.css">
+    <title>课程表查询--个人课表</title>
+<body>
+<div class="header">
+    <span>课表</span>
+    <a href="index.html" class="back"><i class="iconfont icon-left"></i></a>
+</div>
+<div class="content">
+    <section class="query">
+
+    </section>
+</div>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/basic.js"></script>
+<script type="text/javascript" src="js/rem.js"></script>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/checkcookie",
+            dataType: "html",
+            success: function (msg) {
+                if (msg == "0") {
+                    alert("你还没有登陆，登陆下吧亲！");
+                    window.location.href = "login.html";
+                }
+                else {
+                    console.log("会话正常！");
+                }
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "/getMyCourse",
+            dataType: "html",
+            success: function (msg) {
+                if (msg == "0") {
+                    alert("请重新绑定教务系统！")
+                    window.location.href = "bindjw.html";
+                }
+                else if (msg == "104") {
+                    alert("网络异常！")
+                    window.location.href = "bindjw.html";
+                }
+                else {
+                    $(".query").html("");
+                    $(".query").html(msg);
+                }
+            }
+        });
+    });
+</script>
+
+</html>

@@ -1,0 +1,457 @@
+/* CSS Document */
+@charset "utf-8";
+/*全局*/
+h1, h2, h3, h4, h5, h6, hr, p, dl, dt, dd, ul, ol, li, form, button, input, textarea, fieldset, legend {
+    margin: 0;
+    padding: 0
+}
+
+h1, h2, h3, h4, h5, h6, button, input, select, textarea {
+    font-size: 100%
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    color: white;
+    font-family: "Microsoft YaHei", "微软雅黑", "宋体", Arial, Helvetica, sans-serif;
+}
+
+@media only screen and (max-width: 1920px) {
+    body {
+        font-size: 38px;
+    }
+}
+
+@media only screen and (max-width: 1336px) {
+    body {
+        font-size: 36px;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    body {
+        font-size: 34px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    body {
+        font-size: 32px;
+    }
+}
+
+@media only screen and (max-width: 828px) {
+    body {
+        font-size: 28px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 28px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    body {
+        font-size: 28px;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    body {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    body {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    body {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    body {
+        font-size: 12px;
+    }
+}
+
+a:link {
+    color: #333;
+    text-decoration: none;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+dl, dt, dd {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: 0;
+}
+
+.clr {
+    clear: both
+}
+
+/*清除浮动*/
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+div {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box; /* Firefox */
+    -webkit-box-sizing: border-box; /* Safari */
+}
+
+/*==============================================================================*/
+/*咨询
+/*==============================================================================*/
+.zixuntext {
+    text-align: center
+}
+
+.news_title {
+    font-size: 130%;
+    color: #308dea;
+    background: white;
+    font-weight: normal;
+    padding: 1% 0;
+}
+
+.banner {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #151515;
+}
+
+#scroller {
+    height: auto;
+    float: left;
+    padding: 0;
+}
+
+#scroller ul {
+    list-style: none;
+    display: block;
+    float: left;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+#scroller li {
+    display: block;
+    float: left;
+    width: auto;
+    height: auto;
+    text-align: center;
+    font-size: 0px;
+    padding: 0;
+    position: relative;
+}
+
+#scroller li a {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+#scroller li p {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #F4F4F4;
+    font-size: 14px;
+    text-indent: 55px;
+    line-height: 24px;
+    text-align: left;
+    text-indent: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.nav {
+    float: right;
+    margin-top: -25px;
+    padding: 0;
+    position: relative;
+    width: auto;
+    z-index: 3;
+}
+
+#indicator > li {
+    display: block;
+    float: left;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#indicator {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+
+#indicator > li {
+    text-indent: -9999em;
+    width: 8px;
+    height: 8px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    background: #888;
+    overflow: hidden;
+    margin-right: 4px;
+}
+
+#indicator > li.active {
+    background: #196ed2;
+}
+
+#indicator > li:last-child {
+    margin: 0 8px 0 0;
+}
+
+/*==============================================================================*/
+/*公告
+/*==============================================================================*/
+.tabslider {
+    width: 94%;
+    padding: 3%;
+}
+
+.tabslider li a:link {
+    color: #333333;
+}
+
+/* 未访问的链接 */
+.tabslider li a:visited {
+    color: #45c0f8;
+}
+
+/* 已访问的链接 */
+.tabslider li a:hover {
+    color: #3388cc;
+}
+
+/* 当有鼠标悬停在链接上 */
+
+.tabslider li span, .tabslider .hidden div span {
+    display: block;
+    width: 100%;
+    color: #C5C5C5;
+    text-align: right;
+    font-size: 0.875em;
+    padding: 1% 0;
+}
+
+.tabslider li {
+    padding: 3% 0;
+    border-bottom: solid 1px #EFEFEF;
+}
+
+/*==============================================================================*/
+/*HEADER
+/*==============================================================================*/
+.header {
+    position: relative;
+    background: #45c0f8;
+    text-align: center;
+    font-size: .62rem;
+    padding: .42rem 0;
+    color: #fff;
+}
+
+.page_title {
+    float: left;
+    margin-left: 33%;
+    text-align: center;
+    font-size: 150%;
+    padding-top: 2%
+}
+
+a.back_button {
+    float: left;
+    color: #c5c5c5;
+    font-weight: bold;
+    margin-top: 2%;
+    margin-left: 4%;
+}
+
+a#menu_open {
+    float: right;
+    color: #c5c5c5;
+    font-weight: bold;
+}
+
+.clear {
+    clear: both
+}
+
+/*==============================================================================*/
+/*文字字体大小
+/*==============================================================================*/
+.textAa {
+    display: inline-block;
+    float: right;
+    width: 20%;
+    margin-top: 1%
+}
+
+.fontSize {
+    background: #fff;
+    padding: 2%;
+    float: right
+}
+
+.smallSize {
+    background: #308dea;
+    color: #fff;
+    text-align: center;
+    float: right;
+    padding: 4px 10px;
+    font-size: 80%;
+}
+
+.smalA {
+    text-align: center;
+    float: right;
+    text-decoration: none;
+    padding: 4px 10px;
+    font-size: 80%
+}
+
+.bigSize {
+    background: #308dea;
+    color: #fff;
+    text-align: center;
+    float: left;
+    padding: 3.5px 10px;
+}
+
+.bigA {
+    text-align: center;
+    float: left;
+    text-decoration: none;
+    padding: 3.5px 10px;
+}
+
+.ggNeirong {
+    width: 100%;
+    padding: 3% 3% 3% 3%;
+}
+
+.gg_title {
+    border-bottom: 1px #ccc solid;
+    padding-bottom: 2%;
+    color: #333333;
+}
+
+.ggNeirong .gg_title h1 {
+    line-height: 140%;
+    font-weight: normal;
+    font-size: 130%
+}
+
+.gg_title span {
+    display: block;
+    padding: 1% 0;
+    font-size: 90%;
+    color: #666;
+}
+
+.gg_texgt {
+    line-height: 140%;
+    color: black;
+}
+
+.gg_texgt p {
+    line-height: 200%;
+    padding: 1.5% 0;
+}
+
+/*==============================================================================*/
+/*新闻
+/*==============================================================================*/
+.ColorBG_blue {
+    font-style: normal;
+    float: left;
+    font-size: 70%;
+    background: #0864b7;
+    padding: 0.3% 0.5%;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.ColorBG_red {
+    font-style: normal;
+    float: left;
+    font-size: 70%;
+    background: #fb1717;
+    padding: 0.3% 0.5%;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.newName {
+    float: left;
+    font-style: normal;
+    margin-right: 3%;
+}
+img{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.Newsinfo {
+}

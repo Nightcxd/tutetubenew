@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="css/topic.css?v=3.00"/>
+    <link rel="stylesheet" type="text/css" href="css/SchoolTopic.css"/>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script>
+        document.write('<div id="bigLoadingHolder" style="position:absolute;top:0;z-index:2;background:#fff;height:100%;width:100%"><div id="loadingDiv" style="background:rgba(0,0,0,0.8);border-radius:5px;position:absolute;top:50%;left:50%;margin:-15px 0 0 -40px;width:80px;line-height:30px;font-size:14px;height:30px;text-align:center;color:#f1f1f1">正在加载</div></div>');
+    </script>
+    <title>课下</title>
+<body>
+<div class="header">
+    <span id="title">星座</span>
+    <a href="pulic.html" class="back"><i class="iconfont icon-left"></i></a>
+</div>
+<div class="over"></div>
+<!--背景层-->
+<div id="wrap">
+    <ul id="list" class="clearfix">
+        <!--<li class="topic-li">-->
+        <!--<div class="main">-->
+        <!--<div class="user title clearfix">-->
+        <!--<img class="user-icon float-left-box" src="http://qiniu.myfriday.cn/3_1200130_12871928_1484277857083.jpg">-->
+
+        <!--<div class="title">-->
+        <!--<p class="name">、折戟沉沙</p>-->
+
+        <!--<p class="relate"><span class="time">01-24 12:25</span><span class="from">来自[信息技术工程学院]</span></p>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="content">农历新年将至，在这一年里你看了几部电影，哪部给你留下深刻印象呢？而随着新年的临近，各类贺岁大片即将霸占各大荧幕，你最期待哪部贺岁大片呢？在这一年里的最后几天，让我们把所有不开心都抛到脑后，忘却所有的烦恼，尽情的享受快乐时光吧！<img src="statics/img/expression/bb_18.png" width="24px" height="24px"><img src="statics/img/expression/bb_18.png" width="24px" height="24px"></div>-->
+
+        <!--<div class="img-div clearfix">-->
+
+        <!--<div class="multi-pic clearfix"> <a class="amplifyImg"><img src="http://qiniu.myfriday.cn/2_1200130_12871928_1485223240683.jpg" class=""></a> <a class="amplifyImg"><img src="http://qiniu.myfriday.cn/2_1200130_12871928_1485223243217.jpg" class=""></a> <a class="amplifyImg"><img src="http://qiniu.myfriday.cn/2_1200130_12871928_1485223248978.jpg" class=""></a> <a class="amplifyImg"><img src="http://qiniu.myfriday.cn/2_1200130_12871928_1485223274595.jpg" class=""></a> <a class="amplifyImg"><img src="http://qiniu.myfriday.cn/2_1200130_12871928_1485223277535.jpg" class=""></a> <a class="amplifyImg"><img src="http://qiniu.myfriday.cn/2_1200130_12871928_1485223275967.jpg" class=""></a></div>-->
+
+        <!--</div>-->
+
+        <!--<div class="read display-none">阅读<span class="num">1393</span></div>-->
+
+        <!--</div>-->
+        <!--<ul class="btns clearfix">-->
+
+        <!--<li class="like like-btn">-->
+        <!--<span class="icon"></span>-->
+
+        <!--<p class="like-box"><span class="txt">26</span></p>-->
+
+        <!--<div class="icon-like-box"></div>-->
+        <!--</li>-->
+
+        <!--<li class="comment">-->
+        <!--<span class="icon"></span>-->
+
+        <!--<p>12</p>-->
+        <!--</li>-->
+        <!--</ul>-->
+
+        <!--</li>-->
+    </ul>
+</div>
+<div class="create-message-btn-wrap">
+    <a id="create-message-btn" href="ReleaseNote.html"></a>
+</div>
+<script type="text/javascript" src="js/basic.js"></script>
+<script type="text/javascript" src="js/rem.js"></script>
+<script type="text/javascript" src="js/topic.js"></script>
+<script type="text/javascript" src="js/jqthumb.min.js"></script>
+<script type="text/javascript">
+    //点击放大图片
+    var imgsObj = $('.amplifyImg');
+    function flushImages(v) {
+        imgsObj = v;
+        if (imgsObj) {
+            $.each(imgsObj, function () {
+                $(this).click(function () {
+                    var currImg = $(this).find("img").get(0);
+                    coverLayer(1);
+                    var tempContainer = $('<div class=tempContainer></div>');//图片容器
+                    with (tempContainer) {//width方法等同于$(this)
+                        appendTo("body");
+                        var windowWidth = $(window).width();
+                        var windowHeight = $(window).height();
+                        //获取图片原始宽度、高度
+                        var orignImg = new Image();
+                        orignImg.src = currImg.src;
+                        var currImgWidth = orignImg.width;
+                        var currImgHeight = orignImg.height;
+                        if (currImgWidth < windowWidth) {//为了让图片不失真，当图片宽度较小的时候，保留原图
+                            if (currImgHeight < windowHeight) {
+                                var topHeight = (windowHeight - currImgHeight) / 2;
+                                if (topHeight > 35) {/*此处为了使图片高度上居中显示在整个手机屏幕中：因为在android,ios的微信中会有一个title导航，35为title导航的高度*/
+                                    topHeight = topHeight - 35;
+                                    css('top', topHeight);
+                                } else {
+                                    css('top', 0);
+                                }
+                                html('<img border=0 src=' + currImg.src + '>');
+                            } else {
+                                css('top', 0);
+                                html('<img border=0 src=' + currImg.src + ' height=' + windowHeight + '>');
+                            }
+                        } else {
+                            var currImgChangeHeight = (currImgHeight * windowWidth) / currImgWidth;
+                            if (currImgChangeHeight < windowHeight) {
+                                var topHeight = (windowHeight - currImgChangeHeight) / 2;
+                                if (topHeight > 35) {
+                                    topHeight = topHeight - 35;
+                                    css('top', topHeight);
+                                } else {
+                                    css('top', 0);
+                                }
+                                html('<img border=0 src=' + currImg.src + ' width=' + windowWidth + ';>');
+                            } else {
+                                css('top', 0);
+                                html('<img border=0 src=' + currImg.src + ' width=' + windowWidth + '; height=' + windowHeight + '>');
+                            }
+                        }
+                    }
+                    tempContainer.click(function () {
+                        $(this).remove();
+                        coverLayer(0);
+                    });
+                });
+            });
+        }
+        else {
+            //return false;
+        }
+        //使用禁用蒙层效果
+        function coverLayer(tag) {
+            with ($('.over')) {
+                if (tag == 1) {
+                    css('height', $(document).height());
+                    css('display', 'block');
+                    css('opacity', 1);
+                    css("background-color", "#191919");
+                }
+                else {
+                    css('display', 'none');
+                }
+            }
+        }
+    }
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/getNoteType",
+            dataType: "html",
+            success: function (msg) {
+                if (msg == "0") {
+                    alert("你还没有登陆，登陆下吧亲！");
+                    window.location.href = "login.html";
+                }
+                else {
+                    $("#title").html("");
+                    $("#title").html(msg.trim());
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/getPublicNote",
+                        dataType: "html",
+                        async: false,
+                        success: function (msg) {
+                            $("#list").html("");
+                            $("#list").html(msg);
+
+                            $('.amplifyImg img').jqthumb({
+                                width: 80,
+                                height: 80
+                            });
+                            var v = $('.amplifyImg');
+                            flushImages(v);
+                        }
+                    });
+                }
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

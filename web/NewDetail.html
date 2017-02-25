@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>内容详情</title>
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/schoolstyle.css">
+<script>
+function $(xixi) {
+return document.getElementById(xixi);
+}
+//转换字号
+function doZoom(size){
+	if(size==16){
+		$("contentText").style.fontSize = size + "px";
+		$("fs12").style.display = "";
+		$("fs14").style.display = "none";
+	}
+	if(size==24){
+		$("contentText").style.fontSize = size + "px";
+		$("fs12").style.display = "none";
+		$("fs14").style.display = "";
+	}
+}
+</script>
+
+</head>
+<body>
+<!-- header 开始 -->
+    	<div class="header black_gradient">
+            <a href="javascript:history.back(-1);"  class="back_button black_button"><img src="images/gg_lefticon.png" width="15" height="25"></a>
+            <div class="page_title">此处标题</div>
+            <div class="textAa">
+                <div class=fontSize id=fs12 style="DISPLAY: none">
+                <a href="javascript:doZoom(24)" class="bigA">A</a> 
+                <div class="smallSize">A</div>
+                </div>
+                <div class=fontSize id=fs14>
+                <span class="bigSize">A</span> 
+                <a href="javascript:doZoom(16)" class="smalA">A</a>
+               </div>
+           </div>
+            <div class="clear"></div>
+        </div>
+<!-- header 结束 -->
+<!--公告文章 开始--> 
+<div class="ggNeirong">
+<div class="gg_title">
+<h1 id="title">内容标题</h1>
+<span class="time">时间<em class="newName">发布人</em></span>
+</div>
+<div class="gg_texgt" id="contentText">
+此处内容区域
+</div>
+</div> 
+<!--公告文章 结束-->    
+</body>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js">
+</script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/getModulePartDetails",
+            dataType: "html",
+            success: function (msg) {
+                if(msg=="0"||msg=="100"){
+                    alert("网络异常");
+                }
+                else{
+                    var List=msg.split("#$%");
+                    var ListSize=List.length-1;
+                    var title=List[0].split("$@")[0];
+                    var time=List[0].split("$@")[1]+'<em class="newName">发布人</em>';
+                    var Result="";
+                    for(var i=0;i<ListSize;i++){
+                        var Single=List[i].split("$@");
+                        var fileType=Single[2].trim();
+                        if(fileType=="image"){
+                            var content=Single[3];
+                            var fileUrl=Single[4];
+                          Result+= '<p><img src='+fileUrl+'></img>'+content+'</p>';
+                        }
+                    }
+                    $(".page_title").html(title);
+                    $("#title").html(title);
+                    $(".time").html(time);
+                    $(".gg_texgt").html(Result);
+                }
+            }
+        });
+    })
+</script>
+</html>

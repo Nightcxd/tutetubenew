@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="">
+  <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+  <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="css/base.css"/>
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <title>个人中心</title>
+    <script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
+    <style type="text/css">
+        .picupload {
+            opacity: 0;
+            width: 1.4rem;
+            height: 1.4rem;
+            cursor: pointer;
+            overflow: hidden;
+            float: left;
+            position: absolute;
+        }
+    </style>
+</head>
+
+	<body class="usercenterbge">
+		<div class="write-info">
+			<span>
+                <input id="picupload" capture="camera" class="picupload" name="fileselect[]" type="file"
+                       accept="image/*" multiple/>
+				<img src="upload/img/default.jpg" id="headicon">
+			</span>
+			<p id="nickname">您还没有填写信息哦</p>
+			<span class="goin"><i class="iconfont icon-right"></i></span>
+		</div>
+
+		<ul class="ask-box">
+			<li class="ask-item">
+				<a href="user-info.html">
+				    <i class="iconfont icon-data"></i>
+				    <span class="ask-word">个人信息</span>
+				    <span class="goin"><i class="iconfont icon-right"></i></span>
+				</a>
+			</li>
+
+            <li class="ask-item" id="s-info">
+                <a href="student-info.html">
+                    <i class="iconfont icon-info"></i>
+                    <span class="ask-word">学籍信息</span>
+                    <span class="goin"><i class="iconfont icon-right"></i></span>
+                </a>
+            </li>
+
+			<li class="ask-item nobor">
+				<a href="changepsw.html">
+				    <i class="iconfont icon-changpsw"></i>
+				    <span class="ask-word">修改密码</span>
+				    <span class="goin"><i class="iconfont icon-right"></i></span>
+				</a>
+			</li>
+			
+		</ul>
+		<div class="sign-out">
+				<a href="#">
+					<i class="iconfont icon-logout"></i>
+				   <span>退出</span>
+				</a>
+		</div>
+		<div class="footer">
+    	<ul class="footer-page clearfix">
+    		<li class="page-item">
+    			<a href="index.html" class="active">
+    				<i class="iconfont icon-index"></i>
+    				<p>首页</p>
+    			</a>
+    		</li>
+    		<li class="page-item">
+    			<a href="queryAll.html">
+    				<i class="iconfont icon-computer"></i>
+    				<p>查询</p>
+    			</a>
+    		</li>
+    		<li class="page-item">
+    			<a href="pulic.html">
+    				<i class="iconfont icon-ask"></i>
+    				<p>广场</p>
+    			</a>
+    		</li>
+    		<li class="page-item">
+    			<a href="friend.html">
+    				<i class="iconfont icon-friend"></i>
+    				<p>好友</p>
+    			</a>
+    		</li>
+            <li class="page-item active">
+                <a href="user-center.html">
+                    <i class="iconfont icon-person1"></i>
+                    <p>我的</p>
+                </a>
+            </li>
+    	</ul>
+    </div>
+    <div class="outlayer">
+    	<div class="tip-box">
+    		<h3>退出</h3>
+    		<p class="ta-right">
+    			  <a href="login.html" class="ok">确认</a>
+    				<a href="#" class="cancel">取消</a>
+    		</p>
+    	</div>
+    	<div class="cover"></div>
+    </div>
+	 <script src="js/jquery.min.js"></script>
+		<script src="js/slick.min.js"></script>
+		<script src="js/basic.js"></script>
+		<script src="js/rem.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "/findcookies",
+                dataType: "html",
+                success: function (msg) {
+                    var nicknamecn=msg.split("#$%")[1];
+                    var headicon=msg.split("#$%")[3];
+                    $("#nickname").html("");
+                    $("#nickname").html(nicknamecn);
+                    $("#headicon").html("");
+                    $("#headicon").attr('src',headicon);
+
+                }
+            });
+        });
+        window.onload = function () {
+            var input = document.getElementById("picupload");
+            var result, div;
+
+            if (typeof FileReader === 'undefined') {
+                result.innerHTML = "抱歉，你的浏览器不支持 FileReader";
+                input.setAttribute('disabled', 'disabled');
+            } else {
+                input.addEventListener('change', readFile, false);
+            }//handler
+            function readFile() {
+                var fd = new FormData();
+                var count = this.files.length;
+                for (var i = 0; i < count; i++) {
+                    if (count - 1 > 0) {
+                        return alert("请选择一张头像！");
+                    }
+                    else {
+                        if (!input['value'].match(/.jpg|.gif|.png|.bmp/i)) {//判断上传文件格式
+                            return alert("上传的图片格式不正确，请重新选择");
+                        }
+                        var reader = new FileReader();
+                        reader.readAsDataURL(this.files[i]);
+                        fd.append("img" + i, this.files[i]);//
+                        reader.onload = function (e) {
+                              $("#headicon").attr('src',this.result);
+                            $.ajax({
+                                type: "POST",
+                                url: "/uploadHeadIcon",
+                                data:{"headicon":this.result},
+                                dataType: "html",
+                                success: function (msg) {
+                                    if(msg=="0"){
+                                        alert("头像更新失败，请重新操作！");
+                                        location.reload();
+                                    }
+                                    else if(msg=="102"||msg=="103"){
+                                        alert("你还没有登录，请重新登陆！");
+                                        window.location.href="login.html";
+                                    }
+                                    else if(msg=="1"){
+                                        alert("头像更新成功！");
+                                        location.reload();
+                                    }
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    </body>
+</html>

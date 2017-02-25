@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/chinese.css"/>
+    <title>普通话水平测试成绩查询</title>
+<body style="background: #eee;">
+
+<div class="header">
+    <span>普通话水平测试成绩查询</span>
+    <a href="queryAll.html" class="back"><i class="iconfont icon-left"></i></a>
+</div>
+
+<div class="forminfo">
+
+    <!-- name -->
+    <div class="name input-box">
+        <div class="long-input">
+            <span class="input-name">姓名</span>
+            <input type="text" id="name" class="input-value" placeholder="请输入考生姓名">
+        </div>
+    </div>
+
+    <!-- idCard -->
+    <div class="passcode input-box">
+        <div class="long-input">
+            <span class="input-name">身份证号</span>
+            <input type="text" placeholder="请输入号码" class="input-value" id="idCard">
+        </div>
+    </div>
+
+    <!-- submit btn -->
+    <button class="blue-radius-box" id="submit-btn" onclick="queryChinese()">查询成绩</button>
+
+</div>
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/basic.js"></script>
+<script type="text/javascript" src="js/rem.js"></script>
+
+<script>
+    function queryChinese() {
+        var name = $("#name").val().trim();
+        var idCard = $("#idCard").val().trim();
+        if (name == "" || idCard == "") {
+            alert("请正确填写信息");
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: "/cquery?name="+name.trim()+"&idCard="+idCard.trim()+"",
+                dataType: "html",
+                success: function (msg) {
+                    if (msg == "104") {
+                        alert("信息错误！");
+                    }
+                    else if (msg == "1") {
+                        window.location.href = "chineseresult.html";
+                    }
+                    else {
+                        alert("未知异常！");
+                    }
+                }
+            });
+        }
+    }
+</script>
+
+</body>
+</html>

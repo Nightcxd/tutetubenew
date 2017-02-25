@@ -1,0 +1,847 @@
+@charset "UTF-8";
+/* set font  style */
+/* set sprite */
+/* end the hover and active less */
+/* link color setting */
+/* transform scale */
+/**
+* create sprite function
+* @param {
+    [type]
+}
+$path                 [the path of icons folder]
+* @param {
+    [type]
+}
+$name                 [the file name]
+* @param {
+    [type]
+}
+$display:inline-block [set the display]
+* @param {
+    [type]
+}
+$repeat:no-repeat     [description]
+* @return {
+    [type]
+}
+[description]
+* @example
+*  @import "common/fn";
+*  .icon-add {
+    @include sprite('icons/* .png', 'club-dep-setting-plus');
+}
+*/
+/* css rest Eric Meyer */
+/* line 3, ../../scss/common/common.scss */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote,
+a, strong, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, tbody, tfoot, thead, tr, th, td,
+aside, canvas, footer, header, hgroup,
+menu, nav, section, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 18, ../../scss/common/common.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+/* line 22, ../../scss/common/common.scss */
+body {
+    line-height: 1;
+}
+
+/* line 26, ../../scss/common/common.scss */
+ol, ul {
+    list-style: none;
+}
+
+/* line 29, ../../scss/common/common.scss */
+blockquote, q {
+    quotes: none;
+}
+
+/* line 32, ../../scss/common/common.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/* line 37, ../../scss/common/common.scss */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* line 42, ../../scss/common/common.scss */
+a {
+    text-decoration: none;
+}
+
+/* line 46, ../../scss/common/common.scss */
+button {
+    outline: none;
+}
+
+/* line 49, ../../scss/common/common.scss */
+html, body, p, div, button, input, textarea, a, span {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* line 53, ../../scss/common/common.scss */
+body, input, textarea, button {
+    font-family: Helvetica;
+    font-size: 16px;
+}
+
+/* line 58, ../../scss/common/common.scss */
+input, input:active, textarea, textarea:active {
+    outline: none;
+}
+
+/* line 62, ../../scss/common/common.scss */
+img {
+    border: none;
+}
+
+/* line 66, ../../scss/common/common.scss */
+body {
+    background-color: #fff;
+}
+
+/* line 70, ../../scss/common/common.scss */
+.vertical-grand {
+    display: table;
+}
+
+/* line 74, ../../scss/common/common.scss */
+.vertical-parent {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* line 80, ../../scss/common/common.scss */
+.display-none {
+    display: none !important;
+}
+
+/* line 84, ../../scss/common/common.scss */
+.hidden {
+    visibility: hidden;
+}
+
+/* line 88, ../../scss/common/common.scss */
+.float-left-box {
+    float: left;
+}
+
+/* line 92, ../../scss/common/common.scss */
+.float-right-box {
+    float: right;
+}
+
+/* line 96, ../../scss/common/common.scss */
+.clearfix {
+    zoom: 1;
+}
+
+/* line 100, ../../scss/common/common.scss */
+.clearfix:after {
+    content: "";
+    height: 0;
+    font-size: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+/* header start */
+/* line 110, ../../scss/common/common.scss */
+#head {
+    background-color: #4ab7f5;
+}
+
+/* line 138, ../../scss/common/common.scss */
+#head .download-link {
+    display: block;
+    font-size: 0;
+    line-height: 0;
+}
+
+/* line 149, ../../scss/common/common.scss */
+#head .download-link img {
+    width: 100%;
+}
+
+/* header end */
+/* weixin start */
+/* line 162, ../../scss/common/common.scss */
+#weixin {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* line 166, ../../scss/common/common.scss */
+#weixin .marker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: auto auto;
+    width: 100%;
+    height: 100%;
+    -moz-opacity: 0.8;
+    -khtml-opacity: 0.8;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    background-color: #000;
+    z-index: 909;
+}
+
+/* line 180, ../../scss/common/common.scss */
+#weixin .weixin-bg-img {
+    float: right;
+}
+
+/* line 183, ../../scss/common/common.scss */
+#weixin .weixin-btn {
+    margin: 215px auto 0;
+    height: 50px;
+    width: 125px;
+    display: block;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+/* weixin end */
+/* start the toast */
+/* line 198, ../../scss/common/common.scss */
+#toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    z-index: 9999;
+    width: 200px;
+    margin-left: -100px;
+    -ms-transform: translateY(0px);
+    -ms-transition: 1.5s all;
+    -moz-transform: translateY(0px);
+    -moz-transition: 1.5s all;
+    -webkit-transform: translateY(0px);
+    -webkit-transition: 1.5s all;
+    transform: translateY(0px);
+    transition: 1.5s all;
+    opacity: 0;
+}
+
+/* line 215, ../../scss/common/common.scss */
+#toast p {
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 13px;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+/* line 221, ../../scss/common/common.scss */
+#toast.toast-animation {
+    opacity: 1;
+}
+
+/* line 224, ../../scss/common/common.scss */
+#toast.low-android {
+    position: absolute;
+    -webkit-transition: 1.5s -webkit-transform, 1.5s opacity, 0s top;
+    -ms-transition: 1.5s -ms-transform, 1.5s opacity, 0s top;
+    -moz-transition: 1.5s -moz-transform, 1.5s opacity, 0s top;
+    transition: 1.5s transform, 1.5s opacity, 0s top;
+}
+
+/* end the toast */
+/* start the mask */
+/* line 235, ../../scss/common/common.scss */
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    -moz-opacity: .3;
+    -khtml-opacity: .3;
+    opacity: .3;
+    filter: alpha(opacity=30);
+    background-color: #000;
+    z-index: 1001;
+}
+
+/* end the mask */
+/* start the download dialog */
+/* line 253, ../../scss/common/common.scss */
+#download-dialog .main, #tip-dialog .main {
+    -webkit-transform: translate3d(0, 0, 100px);
+    -moz-transform: translate3d(0, 0, 100px);
+    -ms-transform: translate3d(0, 0, 100px);
+    -o-transform: translate3d(0, 0, 100px);
+    transform: translate3d(0, 0, 100px);
+}
+
+/* line 261, ../../scss/common/common.scss */
+#download-dialog, #tip-dialog {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    text-align: center;
+    font-size: 18px;
+    color: #000;
+}
+
+/* line 271, ../../scss/common/common.scss */
+#download-dialog .main, #tip-dialog .main {
+    position: absolute;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    margin-top: -78px;
+    margin-left: -145px;
+    width: 290px;
+    padding: 0 0 10px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #fff;
+    z-index: 1100;
+}
+
+/* line 285, ../../scss/common/common.scss */
+#download-dialog .main .title, #tip-dialog .main .title {
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    color: #666;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+/* line 292, ../../scss/common/common.scss */
+#download-dialog .main .msg, #tip-dialog .main .msg {
+    text-align: center;
+    margin: 10px 5px 25px;
+    line-height: 20px;
+    color: #333;
+    font-size: 16px;
+}
+
+/* line 299, ../../scss/common/common.scss */
+#download-dialog .main .alert-btn-box, #tip-dialog .main .alert-btn-box {
+    width: 105px;
+    height: 40px;
+    line-height: 40px;
+    background: url(../img/green_btn_bg.png) center center;
+    background-repeat: repeat-x;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #06aa5a;
+    letter-spacing: 10px;
+    padding-left: 10px;
+    margin: 0 auto;
+}
+
+/* line 311, ../../scss/common/common.scss */
+#download-dialog .main .alert-btn-box a, #tip-dialog .main .alert-btn-box a {
+    color: #fff;
+    font-size: 14px;
+}
+
+/* line 315, ../../scss/common/common.scss */
+#download-dialog .main .confirm-btn-box, #tip-dialog .main .confirm-btn-box {
+    padding: 0 8px;
+}
+
+/* line 317, ../../scss/common/common.scss */
+#download-dialog .main .confirm-btn-box a, #tip-dialog .main .confirm-btn-box a {
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    cursor: pointer;
+    width: 130px;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    display: block;
+}
+
+/* line 326, ../../scss/common/common.scss */
+#download-dialog .main .confirm-btn-box a.cancel-btn, #tip-dialog .main .confirm-btn-box a.cancel-btn {
+    border: 1px solid #ccc;
+    margin-right: 8px;
+    color: #666;
+    font-size: 18px;
+}
+
+/* line 330, ../../scss/common/common.scss */
+#download-dialog .main .confirm-btn-box a.cancel-btn:visited, #tip-dialog .main .confirm-btn-box a.cancel-btn:visited {
+    color: #666;
+}
+
+/* line 334, ../../scss/common/common.scss */
+#download-dialog .main .confirm-btn-box a.confirm-btn, #tip-dialog .main .confirm-btn-box a.confirm-btn {
+    border: 1px solid #2bbf23;
+    background-color: #5cd444;
+    color: #fff;
+    font-size: 18px;
+}
+
+/* line 338, ../../scss/common/common.scss */
+#download-dialog .main .confirm-btn-box a.confirm-btn:visited, #tip-dialog .main .confirm-btn-box a.confirm-btn:visited {
+    color: #fff;
+}
+
+/* line 347, ../../scss/common/common.scss */
+#tip-dialog .main .confirm-btn-box a.cancel-btn {
+    margin: 0 auto;
+}
+
+/* end the download dialog */
+/* start the banner nav */
+/* line 354, ../../scss/common/common.scss */
+#banner-nav {
+    border-bottom: 1px solid #e4e4e4;
+    height: 45px;
+    line-height: 45px;
+    background: #fff;
+    overflow: hidden;
+}
+
+/* line 360, ../../scss/common/common.scss */
+#banner-nav a {
+    color: #5ca4dc;
+    font-size: 12px;
+}
+
+/* line 362, ../../scss/common/common.scss */
+#banner-nav a.more {
+    padding: 0 0 0 10px;
+}
+
+/* line 365, ../../scss/common/common.scss */
+#banner-nav a.intro {
+    padding: 0 18px 0 0;
+}
+
+/* line 368, ../../scss/common/common.scss */
+#banner-nav a:visited {
+    color: #5ca4dc;
+    font-size: 12px;
+}
+
+/* line 372, ../../scss/common/common.scss */
+#banner-nav p {
+    text-align: center;
+    color: #333333;
+    font-size: 16px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* end the banner nav */
+/* start 评分 */
+@-webkit-keyframes myScoreScaleAni {
+    50% {
+        -webkit-transform: scale(1.4, 1.4);
+    }
+    100% {
+        -webkit-transform: scale(1, 1);
+    }
+}
+
+@-moz-keyframes myScoreScaleAni {
+    50% {
+        -moz-transform: scale(1.4, 1.4);
+    }
+    100% {
+        -moz-transform: scale(1, 1);
+    }
+}
+
+@-ms-keyframes myScoreScaleAni {
+    50% {
+        -ms-transform: scale(1.4, 1.4);
+    }
+    100% {
+        -ms-transform: scale(1, 1);
+    }
+}
+
+@-o-keyframes myScoreScaleAni {
+    50% {
+        -o-transform: scale(1.4, 1.4);
+    }
+    100% {
+        -o-transform: scale(1, 1);
+    }
+}
+
+@keyframes myScoreScaleAni {
+    50% {
+        transform: scale(1.4, 1.4);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+/* line 426, ../../scss/common/common.scss */
+#list > li .grade-box .point-box .p-b-point {
+    display: inline-block;
+}
+
+/* line 428, ../../scss/common/common.scss */
+#list > li .grade-box .point-box .p-b-point.active {
+    -webkit-animation: myScoreScaleAni .2s ease-in 1 forwards;
+    -moz-animation: myScoreScaleAni .2s ease-in 1 forwards;
+    -ms-animation: myScoreScaleAni .2s ease-in 1 forwards;
+    -o-animation: myScoreScaleAni .2s ease-in 1 forwards;
+    animation: myScoreScaleAni .2s ease-in 1 forwards;
+}
+
+@-webkit-keyframes myScaleAni {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(1.2, 1.2);
+    }
+}
+
+@-moz-keyframes myScaleAni {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        -moz-transform: scale(1.2, 1.2);
+    }
+}
+
+@-ms-keyframes myScaleAni {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        -ms-transform: scale(1.2, 1.2);
+    }
+}
+
+@-o-keyframes myScaleAni {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        -o-transform: scale(1.2, 1.2);
+    }
+}
+
+@keyframes myScaleAni {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.2, 1.2);
+    }
+}
+
+@-webkit-keyframes scaleAni {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0.6, 0.6);
+    }
+    90% {
+        -webkit-transform: scale(1.1, 1.1);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1, 1);
+    }
+}
+
+@-moz-keyframes scaleAni {
+    0% {
+        opacity: 0;
+        -moz-transform: scale(0.6, 0.6);
+    }
+    90% {
+        -moz-transform: scale(1.1, 1.1);
+    }
+    100% {
+        opacity: 1;
+        -moz-transform: scale(1, 1);
+    }
+}
+
+@-ms-keyframes scaleAni {
+    0% {
+        opacity: 0;
+        -ms-transform: scale(0.6, 0.6);
+    }
+    90% {
+        -ms-transform: scale(1.1, 1.1);
+    }
+    100% {
+        opacity: 1;
+        -ms-transform: scale(1, 1);
+    }
+}
+
+@-o-keyframes scaleAni {
+    0% {
+        opacity: 0;
+        -o-transform: scale(0.6, 0.6);
+    }
+    90% {
+        -o-transform: scale(1.1, 1.1);
+    }
+    100% {
+        opacity: 1;
+        -o-transform: scale(1, 1);
+    }
+}
+
+@keyframes scaleAni {
+    0% {
+        opacity: 0;
+        transform: scale(0.6, 0.6);
+    }
+    90% {
+        transform: scale(1.1, 1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
+/* line 550, ../../scss/common/common.scss */
+#score-wrap .s-w-bg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 100;
+}
+
+/* line 559, ../../scss/common/common.scss */
+#score-wrap .s-w-pos {
+    position: fixed;
+    top: 35%;
+    left: 0;
+    right: 0;
+    z-index: 200;
+}
+
+/* line 568, ../../scss/common/common.scss */
+#score-wrap .s-w-box {
+    /* position: fixed; */
+    /* margin-top: -30px; */
+    /* margin-left: -148px; */
+    /* left: 50%; */
+    /* top: 50%; */
+    color: #fff;
+    /* z-index: 200; */
+    width: 100%;
+    text-align: center;
+}
+
+/* line 578, ../../scss/common/common.scss */
+#score-wrap .s-w-box .w-b-line {
+    margin-bottom: 10px;
+}
+
+/* line 582, ../../scss/common/common.scss */
+#score-wrap .s-w-box .w-b-line:first-child .b-l-icon:first-child {
+    background-color: #45A3FC;
+}
+
+/* line 585, ../../scss/common/common.scss */
+#score-wrap .s-w-box .w-b-line:first-child .b-l-icon:nth-child(2) {
+    background-color: #18C3FC;
+}
+
+/* line 588, ../../scss/common/common.scss */
+#score-wrap .s-w-box .w-b-line:first-child .b-l-icon:nth-child(3) {
+    background-color: #2BDEE4;
+}
+
+/* line 591, ../../scss/common/common.scss */
+#score-wrap .s-w-box .w-b-line:first-child .b-l-icon:nth-child(4) {
+    background-color: #2DE7BD;
+}
+
+/* line 594, ../../scss/common/common.scss */
+#score-wrap .s-w-box .w-b-line:first-child .b-l-icon:nth-child(5) {
+    background-color: #2DE77B;
+}
+
+/* line 601, ../../scss/common/common.scss */
+#score-wrap .s-w-box .w-b-line:last-child .b-l-icon:first-child {
+    background-color: #EADE26;
+}
+
+/* line 604, ../../scss/common/common.scss */
+#score-wrap .s-w-box .w-b-line:last-child .b-l-icon:nth-child(2) {
+    background-color: #EAC326;
+}
+
+/* line 607, ../../scss/common/common.scss */
+#score-wrap .s-w-box .w-b-line:last-child .b-l-icon:nth-child(3) {
+    background-color: #EAA827;
+}
+
+/* line 610, ../../scss/common/common.scss */
+#score-wrap .s-w-box .w-b-line:last-child .b-l-icon:nth-child(4) {
+    background-color: #F08D2D;
+}
+
+/* line 613, ../../scss/common/common.scss */
+#score-wrap .s-w-box .w-b-line:last-child .b-l-icon:nth-child(5) {
+    background-color: #F06E35;
+}
+
+/* line 619, ../../scss/common/common.scss */
+#score-wrap .s-w-box .b-l-icon {
+    margin-right: 3%;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 2.5;
+    font-size: 20px;
+    border-radius: 25px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* line 630, ../../scss/common/common.scss */
+#score-wrap .s-w-box .b-l-icon.active {
+    -webkit-animation: myScaleAni .1s ease-in 1 forwards;
+    -moz-animation: myScaleAni .1s ease-in 1 forwards;
+    -ms-animation: myScaleAni .1s ease-in 1 forwards;
+    -o-animation: myScaleAni .1s ease-in 1 forwards;
+    animation: myScaleAni .1s ease-in 1 forwards;
+}
+
+/* line 638, ../../scss/common/common.scss */
+#score-wrap .s-w-box .b-l-icon:last-child {
+    margin-right: 0;
+}
+
+/* line 647, ../../scss/common/common.scss */
+#score-wrap.active .w-b-line:first-child .b-l-icon:first-child, #score-wrap.active .w-b-line:last-child .b-l-icon:first-child {
+    -webkit-animation: scaleAni .15s ease-in 1 forwards;
+    -moz-animation: scaleAni .15s ease-in 1 forwards;
+    -ms-animation: scaleAni .15s ease-in 1 forwards;
+    -o-animation: scaleAni .15s ease-in 1 forwards;
+    animation: scaleAni .15s ease-in 1 forwards;
+}
+
+/* line 654, ../../scss/common/common.scss */
+#score-wrap.active .w-b-line:first-child .b-l-icon:nth-child(2), #score-wrap.active .w-b-line:last-child .b-l-icon:nth-child(2) {
+    -webkit-animation: scaleAni .15s ease-in .05s 1 forwards;
+    -moz-animation: scaleAni .15s ease-in .05s 1 forwards;
+    -ms-animation: scaleAni .15s ease-in .05s 1 forwards;
+    -o-animation: scaleAni .15s ease-in .05s 1 forwards;
+    animation: scaleAni .15s ease-in .05s 1 forwards;
+}
+
+/* line 661, ../../scss/common/common.scss */
+#score-wrap.active .w-b-line:first-child .b-l-icon:nth-child(3), #score-wrap.active .w-b-line:last-child .b-l-icon:nth-child(3) {
+    -webkit-animation: scaleAni .15s ease-in .1s 1 forwards;
+    -moz-animation: scaleAni .15s ease-in .1s 1 forwards;
+    -ms-animation: scaleAni .15s ease-in .1s 1 forwards;
+    -o-animation: scaleAni .15s ease-in .1s 1 forwards;
+    animation: scaleAni .15s ease-in .1s 1 forwards;
+}
+
+/* line 668, ../../scss/common/common.scss */
+#score-wrap.active .w-b-line:first-child .b-l-icon:nth-child(4), #score-wrap.active .w-b-line:last-child .b-l-icon:nth-child(4) {
+    -webkit-animation: scaleAni .15s ease-in .15s 1 forwards;
+    -moz-animation: scaleAni .15s ease-in .15s 1 forwards;
+    -ms-animation: scaleAni .15s ease-in .15s 1 forwards;
+    -o-animation: scaleAni .15s ease-in .15s 1 forwards;
+    animation: scaleAni .15s ease-in .15s 1 forwards;
+}
+
+/* line 675, ../../scss/common/common.scss */
+#score-wrap.active .w-b-line:first-child .b-l-icon:nth-child(5), #score-wrap.active .w-b-line:last-child .b-l-icon:nth-child(5) {
+    -webkit-animation: scaleAni .15s ease-in .2s 1 forwards;
+    -moz-animation: scaleAni .15s ease-in .2s 1 forwards;
+    -ms-animation: scaleAni .15s ease-in .2s 1 forwards;
+    -o-animation: scaleAni .15s ease-in .2s 1 forwards;
+    animation: scaleAni .15s ease-in .2s 1 forwards;
+}
+
+/* end 评分 */
+@media screen and (min-width: 960px) {
+    /* line 690, ../../scss/common/common.scss */
+    html, body {
+        min-height: 100%;
+        height: 100%;
+    }
+
+    /* line 694, ../../scss/common/common.scss */
+    body {
+        background-color: #eee;
+    }
+
+    /* line 697, ../../scss/common/common.scss */
+    .create-message-btn-wrap {
+        width: 960px;
+        min-width: 960px;
+        /* height: 100px; */
+        position: fixed;
+        bottom: 0;
+        /* left: 50%; */
+        /* margin: 0 auto; */
+    }
+
+    /* line 705, ../../scss/common/common.scss */
+    .create-message-btn-wrap #create-message-btn {
+        position: absolute !important;
+    }
+
+    /* line 709, ../../scss/common/common.scss */
+    #wrap {
+        width: 960px;
+        min-width: 960px;
+        margin: 0 auto;
+        min-height: 100%;
+    }
+
+    /* line 716, ../../scss/common/common.scss */
+    #wrap #head {
+        width: 960px !important;
+        min-width: 960px;
+    }
+}
